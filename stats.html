@@ -13,7 +13,8 @@
     <h1 class="dtc-name">@</h1>
     <p>
         A freedom of Information request has revealed detailed statistics on the faults recorded for each driving test centre. This page shows which fault categories are most common at each test centre, and crucially, how these compare to the national average. Use this to help you practice for your test and learn what makes your test centre harder or easier than others. The overall pass rate for <span class="dtc-name">@</span> is <span class="dtc-pass-rate">@</span>. The data below shows why people fail here.
-
+    </p>
+    <p>
         Pay extra attention to faults colored in <span class="text-danger fw-bold">red</span>, as they are found more frequently at <span class="dtc-name">@</span> than other test centres. Be thankful that faults colored in <span class="text-success fw-bold">green</span> are less common here.
     </p>
     <h2>Serious and Dangerous Faults</h2>
@@ -22,7 +23,33 @@
     </p>
     <table data-sortable id="fail-faults-table" class="sortable-theme-bootstrap"></table>
 
+    <h2>Driver Faults</h2>
+    <p>
+        Driver faults are minor mistakes. If a candidate accumulates too many in a single category, they will be replaced with a single serious fault. Accumulating 16 driver faults in total can also result in a fail. These are absolute figures, not percentages: if every candidate gets two driver faults for undue hesitation, this will show as 2.0.
+    </p>
     <table data-sortable id="minor-faults-table" class="sortable-theme-bootstrap"></table>
+
+    <h2>Maneuvre Statistics</h2>
+    <p>
+        Each driving test should include one of four reversing maneuvres. On rare occasions, or if a test is prematurely failed, this will be omitted. The table below shows the frequency of each maneuvre and how the overall pass rate varies based on which maneuvre was performed. From this, we can derive the relative difficulty of each maneuvre. If this is 5% it means, the average candidate is 5% more likely to fail if they are asked to do this maneuvre.
+    </p>
+    <p>
+        Some tests will also include an emergency stop. Counterintuitively, pass rates are higher when this is included. This may be because the emergency stop is only requested if the candidate has already demonstrated good control of the vehicle and has not yet made any serious faults.
+    </p>
+    <table data-sortable id="maneuvre-table" class="sortable-theme-bootstrap">
+        <thead>
+            <tr>
+                <th>Maneuvre</th>
+                <th>Frequency</th>
+                <th>Local Pass Rate</th>
+                <th>National Pass Rate</th>
+                <th>Local Relative Difficulty</th>
+                <th>National Relative Difficulty</th>
+            </tr>
+        </thead>
+        <tbody id="maneuvre-table-body">
+        </tbody>
+    </table>
 
     <script src="stats.js"></script>
 </body>

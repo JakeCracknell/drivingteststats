@@ -1,7 +1,7 @@
 // Get the DTC ID from the URL
 const dtc_id = new URLSearchParams(window.location.search).get('dtc');
 const dtcPath = 'data/dtc/' + dtc_id + '.json';
-const nationalPath = 'data/national.json';
+const nationalPath = 'data/dtc/national.json';
 
 // Use Promise.all to load both files concurrently
 Promise.all([fetch(dtcPath), fetch(nationalPath)])
@@ -17,6 +17,7 @@ Promise.all([fetch(dtcPath), fetch(nationalPath)])
         console.error('Error loading data:', error);
     });
 
+
 // Updated onDataLoad function to accept both DTC and national data
 function onDataLoad(dtcData, nationalData) {
     document.title = `${dtcData.address.name} - Driving Test Centre Statistics`;
@@ -24,7 +25,13 @@ function onDataLoad(dtcData, nationalData) {
 
     console.log('DTC Data:', dtcData);
     console.log('National Data:', nationalData);
+    populateFaultsTable(dtcData.fails, nationalData.fails, 'fail-faults-table');
+    populateFaultsTable(dtcData.minors, nationalData.minors, 'minor-faults-table');
+    populateManeuvresTable(dtcData, nationalData);
+    Sortable.init();
+}
 
+function populateFaultsTable(dtcFaults, nationalFaults, tableId) {
     let table = `
         <thead>
             <tr>
@@ -38,27 +45,49 @@ function onDataLoad(dtcData, nationalData) {
         <tbody>
     `;
 
-    for (const [key, centreValue] of Object.entries(dtcData.fails)) {
-        const nationalValue = nationalData.fails[key];
-        const difference = centreValue - nationalValue;
-        const differencePercentage = centreValue / nationalValue;
-        const rowColor = getRowColor(differencePercentage);
+    for (const [key, centreValue] of Object.entries(dtcFaults)) {
+        const nationalValue = nationalFaults[key];
+        if (nationalValue !== 0) {
+            const difference = centreValue - nationalValue;
+            const differencePercentage = centreValue / nationalValue;
+            const rowColor = getRowColor(differencePercentage);
 
-        table += `
-            <tr style="background-color: ${rowColor}">
-                <td>${key}</td>
-                <td>${pct(centreValue)}</td>
-                <td>${pct(nationalValue)}</td>
-                <td>${plusSign(difference)}${pct(difference)}</td>
-                <td>${pct(differencePercentage)}</td>
-            </tr>
-        `;
+            table += `
+                <tr style="background-color: ${rowColor}">
+                    <td>${key}</td>
+                    <td>${pct(centreValue)}</td>
+                    <td>${pct(nationalValue)}</td>
+                    <td>${plusSign(difference)}${pct(difference)}</td>
+                    <td>${pct(differencePercentage)}</td>
+                </tr>
+            `;
+        }
     }
 
     table += '</tbody>';
-    document.getElementById('fail-faults-table').innerHTML = table;
-    Sortable.init();
-    Sortable.initTable(document.getElementById('fail-faults-table'));
+    document.getElementById(tableId).innerHTML = table;
+}
+
+function populateManeuvresTable(dtcData, nationalData) {
+    let tbody = '';
+    dtcData.maneuvres.forEach(dtcManeuvre => {
+        const nationalManeuvre = nationalData.maneuvres.find(nm => nm.name === dtcManeuvre.name);
+        const localDifficulty = (dtcManeuvre.pass - dtcData.pass) / dtcManeuvre.pass;
+        const nationalDifficulty = (nationalManeuvre.pass - nationalData.pass) / nationalManeuvre.pass;
+        const rowColor = getRowColor(1 + (-localDifficulty * 4)); //for more contrasting colours
+        tbody += `
+            <tr style="background-color: ${rowColor}">
+                <td>${dtcManeuvre.name}</td>
+                <td>${pct(dtcManeuvre.frequency)}</td>
+                <td>${pct(dtcManeuvre.pass)}</td>
+                <td>${pct(nationalManeuvre.pass)}</td>
+                <td>${plusSign(localDifficulty)}${pct(localDifficulty)}</td>
+                <td>${plusSign(nationalDifficulty)}${pct(nationalDifficulty)}</td>
+            </tr>
+        `;
+
+    });
+    document.getElementById('maneuvre-table-body').innerHTML = tbody;
 }
 
 function pct(value) {
