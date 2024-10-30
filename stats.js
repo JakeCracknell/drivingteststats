@@ -20,7 +20,7 @@ Promise.all([fetch(dtcPath), fetch(nationalPath)])
 
 // Updated onDataLoad function to accept both DTC and national data
 function onDataLoad(dtcData, nationalData) {
-    document.title = `${dtcData.address.name} - Driving Test Centre Statistics`;
+    document.title = document.title.replaceAll('@', dtcData.address.name);
     document.querySelectorAll('.dtc-name').forEach(el => el.innerHTML = dtcData.address.name);
 
     console.log('DTC Data:', dtcData);
