@@ -22,12 +22,14 @@ Promise.all([fetch(dtcPath), fetch(nationalPath)])
 function onDataLoad(dtcData, nationalData) {
     document.title = document.title.replaceAll('@', dtcData.address.name);
     document.querySelectorAll('.dtc-name').forEach(el => el.innerHTML = dtcData.address.name);
+    document.querySelectorAll('.dtc-pass-rate').forEach(el => el.innerHTML = pct(dtcData.pass));
 
     console.log('DTC Data:', dtcData);
     console.log('National Data:', nationalData);
     populateFaultsTable(dtcData.fails, nationalData.fails, 'fail-faults-table');
     populateFaultsTable(dtcData.minors, nationalData.minors, 'minor-faults-table');
     populateManeuvresTable(dtcData, nationalData);
+    populateSpeedLimitLinks(dtcData);
     Sortable.init();
 }
 
@@ -87,6 +89,28 @@ function populateManeuvresTable(dtcData, nationalData) {
     });
     document.getElementById('maneuvre-table-body').innerHTML = tbody;
 }
+
+function populateSpeedLimitLinks(dtcData) {
+    const zoomLevel = `12`;
+    function buildSpeedLimitLink(speedLimitQuery, text) {
+        return `<a class="btn btn-outline-primary" href="https://iandees.github.io/TIGERMap/docs/WorldMap/?filter=highway;${speedLimitQuery}#map=${zoomLevel}/${dtcData.address.latitude}/${dtcData.address.longitude}" target="_blank">${text}</a>`;
+    }
+    const absolutes = [20, 30, 40].map(speedLimit => {
+        return buildSpeedLimitLink(`maxspeed=${speedLimit} mph`, `${speedLimit} mph`);
+    });
+    const mins = [50, 60, 70].map(speedLimit => {
+        return buildSpeedLimitLink(`maxspeed>=${speedLimit} mph`, `${speedLimit}+ mph`);
+    });
+    const nsl = buildSpeedLimitLink(`maxspeed:type=GB:nsl_single,GB:nsl_dual,GB:motorway`, `National Speed Limit`);
+    const allLinks = [...absolutes, ...mins, nsl];
+    document.getElementById('speed-limit-links').innerHTML = allLinks.join('\n');
+
+
+    document.getElementById('stop-signs-link').href = `https://overpass-turbo.eu/?Q=node%5Bhighway%3Dstop%5D%28%7B%7Bbbox%7D%7D%29%3Bout%3B&C=${dtcData.address.latitude}%3B${dtcData.address.longitude}%3B${zoomLevel}&R=`;
+    document.getElementById('google-maps-link').href = `https://www.google.com/maps/search/?api=1&query=${dtcData.address.latitude},${dtcData.address.longitude}`;
+    document.getElementById('osm-link').href = `https://www.openstreetmap.org/?mlat=${dtcData.address.latitude}&mlon=${dtcData.address.longitude}&zoom=${zoomLevel}`;
+}
+
 
 function pct(value) {
     return (value * 100).toFixed(2) + '%';
