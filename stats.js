@@ -44,21 +44,19 @@ function populateFaultsTable(dtcFaults, nationalFaults, tableId) {
         </thead>
         <tbody>
     `;
-
     for (const [key, centreValue] of Object.entries(dtcFaults)) {
         const nationalValue = nationalFaults[key];
         if (nationalValue !== 0) {
             const difference = centreValue - nationalValue;
             const differencePercentage = centreValue / nationalValue;
             const rowColor = getRowColor(differencePercentage);
-
             table += `
                 <tr style="background-color: ${rowColor}">
                     <td>${key}</td>
-                    <td>${pct(centreValue)}</td>
-                    <td>${pct(nationalValue)}</td>
-                    <td>${plusSign(difference)}${pct(difference)}</td>
-                    <td>${pct(differencePercentage)}</td>
+                    <td data-value=${centreValue}>${pct(centreValue)}</td>
+                    <td data-value=${nationalValue}>${pct(nationalValue)}</td>
+                    <td data-value=${difference}>${plusSign(difference)}${pct(difference)}</td>
+                    <td data-value=${differencePercentage}>${pct(differencePercentage)}</td>
                 </tr>
             `;
         }
@@ -78,11 +76,11 @@ function populateManeuvresTable(dtcData, nationalData) {
         tbody += `
             <tr style="background-color: ${rowColor}">
                 <td>${dtcManeuvre.name}</td>
-                <td>${pct(dtcManeuvre.frequency)}</td>
-                <td>${pct(dtcManeuvre.pass)}</td>
-                <td>${pct(nationalManeuvre.pass)}</td>
-                <td>${plusSign(localDifficulty)}${pct(localDifficulty)}</td>
-                <td>${plusSign(nationalDifficulty)}${pct(nationalDifficulty)}</td>
+                <td data-value=${dtcManeuvre.frequency}>${pct(dtcManeuvre.frequency)}</td>
+                <td data-value=${dtcManeuvre.pass}>${pct(dtcManeuvre.pass)}</td>
+                <td data-value=${nationalManeuvre.pass}>${pct(nationalManeuvre.pass)}</td>
+                <td data-value=${localDifficulty}>${plusSign(localDifficulty)}${pct(localDifficulty)}</td>
+                <td data-value=${nationalDifficulty}>${plusSign(nationalDifficulty)}${pct(nationalDifficulty)}</td>
             </tr>
         `;
 
