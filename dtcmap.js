@@ -9,8 +9,6 @@ const map = new mapboxgl.Map({
 });
 
 function getHtmlForPopup(dtc) {
-    //{"id": 245, "name": "Benbecula Island", "totalTestCount": 67, "dailyTestCount": 0.3116, "pass": 0.9104, "attemptNum": 1.3134, "isFirstAttempt": 0.791, "emergencyStop": 0.2985, "reverseBayPark": 0.1343, "forwardBayPark": 0.2537, "parallelPark": 0.2985, "reverseRight": 0.3134, "anyManeuvre": 1.0, "latitude": 57.4725, "longitude": -7.3747, "addrLine1": "Driver and Vehicle Standards Agency", "addrLine2": "Driving Test Centre Benbecula Island", "addrLine3": "Balivanich Airport", "addrLine4": "Benbecula Island", "addrLine5": "", "postcode": "HS7 5LA",
-    // return HTML with all of this information
     let html =  '<h3>' + dtc.name + '</h3>';
     html += '<p>Pass Rate: ' + (100 * dtc.pass).toFixed(2) + '%</p>';
     if (dtc.dailyTestCount < 1) {
@@ -21,9 +19,7 @@ function getHtmlForPopup(dtc) {
         html += '<p>Capacity: ' + dtc.dailyTestCount.toFixed(1) + ' tests per day</p>';
     }
     html += '<p>Postcode: ' + dtc.postcode + '</p>';
-    //stats.html?dtc={id}
-    html += '<p><a href="stats.html?dtc=' + dtc.id + '">See detailed fault statistics</a></p>';
-
+    html += `<p><a href="stats.html?dtc=${dtc.id}&name=${dtc.name}">See detailed fault statistics</a></p>`;
     return html;
 }
 
@@ -122,12 +118,38 @@ function addLayersToMap(data) {
         },
         'minzoom': 9,
     });
+    map.addSource('isochrone', {
+        type: 'geojson',
+        data: {
+            type: 'FeatureCollection',
+            features: []
+        }
+    });
+    map.addLayer({
+        'id': 'isochrone',
+        'type': 'fill',
+        'source': 'isochrone',
+        'paint': {
+            'fill-color': '#000',
+            'fill-opacity': 0.3,
+        },
+    });
 
     map.on('click', 'dtc', function (e) {
+        map.setFilter('dtc-outline', ['==', 'id', e.features[0].properties.id]);
+        map.setFilter('dtc', ['!=', 'id', e.features[0].properties.id]);
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(getHtmlForPopup(e.features[0].properties))
             .addTo(map);
+        const url = `https://api.mapbox.com/isochrone/v1/mapbox/driving-traffic/${e.features[0].properties.longitude},${e.features[0].properties.latitude}?access_token=${mapboxgl.accessToken}` +
+            '&contours_minutes=15&polygons=true&exclude=motorway,toll,ferry,unpaved';
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                map.getSource('isochrone').setData(data);
+            })
+            .catch(error => console.error('Error loading isochrone data:', error));
     });
     map.on('mouseenter', 'dtc', function () {
         map.getCanvas().style.cursor = 'pointer';
@@ -136,5 +158,3 @@ function addLayersToMap(data) {
         map.getCanvas().style.cursor = '';
     });
 }
-
-// load geojson data
