@@ -33,12 +33,13 @@
                     <li class="nav-item"><a class="nav-link" href="#serious-faults">Serious and Dangerous Faults</a></li>
                     <li class="nav-item"><a class="nav-link" href="#driver-faults">Driver Faults</a></li>
                     <li class="nav-item"><a class="nav-link" href="#maneuvre-stats">Maneuvre Statistics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#local-area-info">Local Area</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container mt-5 pt-4">
+    <div class="container my-5 pt-4">
         <section id="overview" class="pt-5">
             <h1 class="dtc-name display-5">@</h1>
             <p class="lead">The overall pass rate for <span class="dtc-name">@</span> is <span class="dtc-pass-rate">@</span>. The data below shows why people fail here.</p>
@@ -51,7 +52,7 @@
         <!-- Serious and Dangerous Faults Section -->
         <section id="serious-faults" class="pt-5">
             <h2>Serious and Dangerous Faults</h2>
-            <p>A serious or dangerous fault will result in a fail. A figure of 1% below means that 1% of tests were failed due to a fault in this category.</p>
+            <p>A serious or dangerous fault will result in a fail. A figure of 5% means that 5% of tests had a S/D fault recorded and therefore, 5% of people failed wholly or partially for this reason.</p>
             <div class="table-responsive">
                 <table data-sortable id="fail-faults-table" class="table sortable-theme-bootstrap"></table>
             </div>
@@ -59,7 +60,7 @@
 
         <section id="driver-faults" class="pt-5">
             <h2>Driver Faults</h2>
-            <p>Driver faults are minor mistakes. If a candidate accumulates too many in a single category, they will be replaced with a single serious fault. Accumulating 16 driver faults in total can also result in a fail. These are absolute figures, not percentages: if every candidate gets two driver faults for undue hesitation, this will show as 2.0.</p>
+            <p>Driver faults are minor mistakes. If a candidate accumulates too many in a single category, they will be replaced with a single serious fault. Accumulating 16 driver faults in total can also result in a fail. As you can get multiple driver faults in the same category,displayed below are absolute figures, not percentages. If <i>every</i> candidate got two driver faults for steering, this will show as 2.0.</p>
             <div class="table-responsive">
                 <table data-sortable id="minor-faults-table" class="table sortable-theme-bootstrap"></table>
             </div>
@@ -87,13 +88,13 @@
             </div>
         </section>
 
-        <section id="useful-links" class="pt-5">
-            <h2>Useful Links</h2>
+        <section id="local-area-info" class="pt-5">
+            <h2>Local Area Information</h2>
 
-            <a id="google-maps-link" class="btn btn-primary" href="#" role="button">Google Maps</a>
-            <a id="osm-link" class="btn btn-primary" href="#" role="button">OpenStreetMap</a>
+            <a id="google-maps-link" class="btn btn-primary" href="#" role="button" target="_blank">Google Maps</a>
+            <a id="osm-link" class="btn btn-primary" href="#" role="button" target="_blank">OpenStreetMap</a>
 
-            <a id="stop-signs-link" class="btn btn-primary" href="#" role="button">Stop Signs</a>
+            <a id="stop-signs-link" class="btn btn-primary" href="#" role="button" target="_blank">Stop Signs</a>
             
             <p>Use the buttons below to see a map of speed limits.</p>
             <div id="speed-limit-links" class="btn-group">

@@ -26,14 +26,14 @@ function onDataLoad(dtcData, nationalData) {
 
     console.log('DTC Data:', dtcData);
     console.log('National Data:', nationalData);
-    populateFaultsTable(dtcData.fails, nationalData.fails, 'fail-faults-table');
-    populateFaultsTable(dtcData.minors, nationalData.minors, 'minor-faults-table');
+    populateFaultsTable(dtcData.fails, nationalData.fails, 'fail-faults-table', pct);
+    populateFaultsTable(dtcData.minors, nationalData.minors, 'minor-faults-table', minorFaultAgg);
     populateManeuvresTable(dtcData, nationalData);
     populateSpeedLimitLinks(dtcData);
     Sortable.init();
 }
 
-function populateFaultsTable(dtcFaults, nationalFaults, tableId) {
+function populateFaultsTable(dtcFaults, nationalFaults, tableId, displayFunction) {
     let table = `
         <thead>
             <tr>
@@ -55,8 +55,8 @@ function populateFaultsTable(dtcFaults, nationalFaults, tableId) {
             table += `
                 <tr style="background-color: ${rowColor}">
                     <td>${key}</td>
-                    <td data-value=${centreValue}>${pct(centreValue)}</td>
-                    <td data-value=${nationalValue}>${pct(nationalValue)}</td>
+                    <td data-value=${centreValue}>${displayFunction(centreValue)}</td>
+                    <td data-value=${nationalValue}>${displayFunction(nationalValue)}</td>
                     <td data-value=${difference}>${plusSign(difference)}${pct(difference)}</td>
                     <td data-value=${differencePercentage}>${pct(differencePercentage)}</td>
                 </tr>
@@ -114,6 +114,10 @@ function populateSpeedLimitLinks(dtcData) {
 
 function pct(value) {
     return (value * 100).toFixed(2) + '%';
+}
+
+function minorFaultAgg(value) {
+    return value.toFixed(3);
 }
 
 function plusSign(value) {
