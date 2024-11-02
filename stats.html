@@ -36,9 +36,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav nav-pills ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#serious-faults">Serious and Dangerous Faults</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#serious-faults">Serious Faults</a></li>
                     <li class="nav-item"><a class="nav-link" href="#driver-faults">Driver Faults</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#maneuvre-stats">Maneuvre Statistics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#maneuvre-stats">Maneuvres</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#time-of-day">Times</a></li>
                     <li class="nav-item"><a class="nav-link" href="#local-area-info">Local Area</a></li>
                 </ul>
             </div>
@@ -55,10 +56,9 @@
             <p>Pay extra attention to faults colored in <span class="text-danger fw-bold">red</span>, as they are found more frequently at <span class="dtc-name">@</span> than other test centres. Be thankful that faults colored in <span class="text-success fw-bold">green</span> are less common here.</p>
         </section>
 
-        <!-- Serious and Dangerous Faults Section -->
         <section id="serious-faults" class="pt-5">
             <h2>Serious and Dangerous Faults</h2>
-            <p>A serious or dangerous fault will result in a fail. A figure of 5% means that 5% of tests had a S/D fault recorded and therefore, 5% of people failed wholly or partially for this reason.</p>
+            <p>A serious or dangerous fault will result in a fail. A figure of 5% means that 5% of tests had either a S/D fault recorded and therefore, 5% of people failed wholly or partially for this reason.</p>
             <div class="table-responsive">
                 <table id="fail-faults-table" class="table"></table>
             </div>
@@ -95,19 +95,28 @@
 
             </p>
             <div class="table-responsive">
-                <table data-sortable id="maneuvre-table" class="table sortable-theme-bootstrap">
+                <table id="maneuvre-table" class="table sortable-theme-bootstrap">
                     <thead>
-                    <tr>
-                        <th>Maneuvre</th>
-                        <th>Frequency</th>
-                        <th>Local Fail %</th>
-                        <th>National Fail %</th>
-                        <th>Local Overall Pass Rate</th>
-                        <th>National Overall Pass Rate</th>
-                    </tr>
+                        <tr>
+                            <th>Maneuvre</th>
+                            <th>Frequency</th>
+                            <th>Local Fail %</th>
+                            <th>National Fail %</th>
+                            <th>Local Overall Pass Rate</th>
+                            <th>National Overall Pass Rate</th>
+                        </tr>
                     </thead>
                     <tbody id="maneuvre-table-body">
                     </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="time-of-day" class="pt-5">
+            <h2>Time of Day</h2>
+            <p>For some test centres, there is some variance in pass rate by time of day. Some faults are easier to make at busy times, and others when roads are clear. On a national level, these balance out and there is no clear correlation on time of day versus pass rates. In this table, Time refers to the test's <i>planned start time</i>. A test starting 11:55 would appear in the 11:00-12:00 bucket. Pay attention to the average number of tests per day scheduled at each of these times. Small sample size bias can cause very rare slot times to exhibit unusually high or low pass rates - they should largely be ignored.</p>
+            <div class="table-responsive">
+                <table id="time-of-day-table" class="table table-sm">
                 </table>
             </div>
         </section>

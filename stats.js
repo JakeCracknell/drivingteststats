@@ -28,6 +28,7 @@ function onDataLoad(dtcData, nationalData) {
     populateFaultsTable(dtcData.fails, nationalData.fails, 'fail-faults-table', pct);
     populateFaultsTable(dtcData.minors, nationalData.minors, 'minor-faults-table', minorFaultAgg);
     populateManeuvresTable(dtcData, nationalData);
+    populateTimeOfDayTable(dtcData);
     populateSpeedLimitLinks(dtcData);
 }
 
@@ -98,6 +99,47 @@ function populateManeuvresTable(dtcData, nationalData) {
         info: false,
         responsive: true
     })
+}
+
+function populateTimeOfDayTable(dtcData) {
+    const dayTypes = ['Mon-Fri', 'Saturday', 'Sunday'];
+    const times = [...new Set(dtcData.times.map(td => td.time))].sort();
+    const avgDailyTests = dtcData.times.reduce((acc, td) => acc + td.dailyTests, 0) / dtcData.times.length;
+    const dailyTestThresholdToBlank = avgDailyTests / 5;
+    const table = `
+        <thead>
+            <tr>
+                <th>Time</th>
+                ${dayTypes.map(dayType => `<th>${dayType}</th>`).join('')}
+            </tr>
+        </thead>
+        <tbody>
+            ${times.map(time => `
+                <tr>
+                    <td>${time}</td>
+                    ${dayTypes.map(dayType => {
+                        const timeData = dtcData.times.find(td => td.dayType === dayType && td.time === time);
+                        if (timeData) {
+                            const color = getRowColor(timeData.pass / dtcData.pass);
+                            const opacity = timeData.dailyTests < dailyTestThresholdToBlank ? 0.25 : 1;
+                            return `<td style="background-color: ${color}; opacity: ${opacity}">
+                                    ${pct(timeData.pass)} (${timeData.dailyTests.toFixed(2)}/day)</td>`;
+                        } else {
+                            return '<td></td>';
+                        }
+                    }).join('')}
+                </tr>
+            `).join('')}
+        </tbody>
+    `;
+    document.getElementById('time-of-day-table').innerHTML = table;
+    new DataTable('#time-of-day-table', {
+        ordering: false,
+        searching: false,
+        paging: false,
+        info: false,
+        responsive: true
+    });
 }
 
 function populateSpeedLimitLinks(dtcData) {
