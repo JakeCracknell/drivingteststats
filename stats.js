@@ -1,7 +1,6 @@
-// Get the DTC ID from the URL
-const dtc_id = new URLSearchParams(window.location.search).get('dtc');
-const dtcPath = 'data/dtc/' + dtc_id + '.json';
-const nationalPath = 'data/dtc/national.json';
+const id = new URLSearchParams(window.location.search).get('dtc');
+const dtcPath = `data/${id}.json`;
+const nationalPath = 'data/national.json';
 
 // Use Promise.all to load both files concurrently
 Promise.all([fetch(dtcPath), fetch(nationalPath)])
@@ -20,8 +19,8 @@ Promise.all([fetch(dtcPath), fetch(nationalPath)])
 
 // Updated onDataLoad function to accept both DTC and national data
 function onDataLoad(dtcData, nationalData) {
-    document.title = document.title.replaceAll('@', dtcData.address.name);
-    document.querySelectorAll('.dtc-name').forEach(el => el.innerHTML = dtcData.address.name);
+    document.title = document.title.replaceAll('@', dtcData.name);
+    document.querySelectorAll('.dtc-name').forEach(el => el.innerHTML = dtcData.name);
     document.querySelectorAll('.dtc-pass-rate').forEach(el => el.innerHTML = pct(dtcData.pass));
 
     console.log('DTC Data:', dtcData);
@@ -30,7 +29,6 @@ function onDataLoad(dtcData, nationalData) {
     populateFaultsTable(dtcData.minors, nationalData.minors, 'minor-faults-table', minorFaultAgg);
     populateManeuvresTable(dtcData, nationalData);
     populateSpeedLimitLinks(dtcData);
-    Sortable.init();
 }
 
 function populateFaultsTable(dtcFaults, nationalFaults, tableId, displayFunction) {
@@ -40,8 +38,8 @@ function populateFaultsTable(dtcFaults, nationalFaults, tableId, displayFunction
                 <th>Fault Category</th>
                 <th>This centre</th>
                 <th>National</th>
-                <th>Difference</th>
-                <th>Difference %</th>
+                <th>Diff</th>
+                <th>Diff %</th>
             </tr>
         </thead>
         <tbody>
@@ -55,10 +53,10 @@ function populateFaultsTable(dtcFaults, nationalFaults, tableId, displayFunction
             table += `
                 <tr style="background-color: ${rowColor}">
                     <td>${key}</td>
-                    <td data-value=${centreValue}>${displayFunction(centreValue)}</td>
-                    <td data-value=${nationalValue}>${displayFunction(nationalValue)}</td>
-                    <td data-value=${difference}>${plusSign(difference)}${pct(difference)}</td>
-                    <td data-value=${differencePercentage}>${pct(differencePercentage)}</td>
+                    <td>${displayFunction(centreValue)}</td>
+                    <td>${displayFunction(nationalValue)}</td>
+                    <td>${plusSign(difference)}${pct(difference)}</td>
+                    <td>${pct(differencePercentage)}</td>
                 </tr>
             `;
         }
@@ -66,34 +64,46 @@ function populateFaultsTable(dtcFaults, nationalFaults, tableId, displayFunction
 
     table += '</tbody>';
     document.getElementById(tableId).innerHTML = table;
+    new DataTable('#' + tableId, {
+        order: [[3, 'desc']],
+        searching: false,
+        paging: false,
+        info: false,
+        responsive: true
+    })
 }
 
 function populateManeuvresTable(dtcData, nationalData) {
     let tbody = '';
     dtcData.maneuvres.forEach(dtcManeuvre => {
         const nationalManeuvre = nationalData.maneuvres.find(nm => nm.name === dtcManeuvre.name);
-        const localDifficulty = (dtcManeuvre.pass - dtcData.pass) / dtcManeuvre.pass;
-        const nationalDifficulty = (nationalManeuvre.pass - nationalData.pass) / nationalManeuvre.pass;
-        const rowColor = getRowColor(1 + (-localDifficulty * 4)); //for more contrasting colours
+        const rowColor = getRowColor(1 + (dtcManeuvre.maneuvre_fails * 4)); //for more contrasting colours
         tbody += `
             <tr style="background-color: ${rowColor}">
                 <td>${dtcManeuvre.name}</td>
-                <td data-value=${dtcManeuvre.frequency}>${pct(dtcManeuvre.frequency)}</td>
-                <td data-value=${dtcManeuvre.pass}>${pct(dtcManeuvre.pass)}</td>
-                <td data-value=${nationalManeuvre.pass}>${pct(nationalManeuvre.pass)}</td>
-                <td data-value=${localDifficulty}>${plusSign(localDifficulty)}${pct(localDifficulty)}</td>
-                <td data-value=${nationalDifficulty}>${plusSign(nationalDifficulty)}${pct(nationalDifficulty)}</td>
+                <td>${pct(dtcManeuvre.frequency)}</td>
+                <td>${pct(dtcManeuvre.maneuvre_fails)}</td>
+                <td>${pct(nationalManeuvre.maneuvre_fails)}</td>
+                <td>${pct(dtcManeuvre.pass)}</td>
+                <td>${pct(nationalManeuvre.pass)}</td>
             </tr>
         `;
 
     });
     document.getElementById('maneuvre-table-body').innerHTML = tbody;
+    new DataTable('#maneuvre-table', {
+        order: [[3, 'desc']],
+        searching: false,
+        paging: false,
+        info: false,
+        responsive: true
+    })
 }
 
 function populateSpeedLimitLinks(dtcData) {
     const zoomLevel = `12`;
     function buildSpeedLimitLink(speedLimitQuery, text) {
-        return `<a class="btn btn-outline-primary" href="https://iandees.github.io/TIGERMap/docs/WorldMap/?filter=highway;${speedLimitQuery}#map=${zoomLevel}/${dtcData.address.latitude}/${dtcData.address.longitude}" target="_blank">${text}</a>`;
+        return `<a href="https://iandees.github.io/TIGERMap/docs/WorldMap/?filter=highway;${speedLimitQuery}#map=${zoomLevel}/${dtcData.address.latitude}/${dtcData.address.longitude}" target="_blank">${text}</a>`;
     }
     const absolutes = [20, 30, 40].map(speedLimit => {
         return buildSpeedLimitLink(`maxspeed=${speedLimit} mph`, `${speedLimit} mph`);

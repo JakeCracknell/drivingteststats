@@ -19,7 +19,7 @@ function getHtmlForPopup(dtc) {
         html += '<p>Capacity: ' + dtc.dailyTestCount.toFixed(1) + ' tests per day</p>';
     }
     html += '<p>Postcode: ' + dtc.postcode + '</p>';
-    html += `<p><a href="stats.html?dtc=${dtc.id}&name=${dtc.name}">See detailed fault statistics</a></p>`;
+    html += `<p><a href="stats.html?dtc=${dtc.id}&name=${dtc.name}" target="_blank">See detailed fault statistics</a></p>`;
     return html;
 }
 
