@@ -29,7 +29,9 @@ function onDataLoad(dtcData, nationalData) {
     populateFaultsTable(dtcData.minors, nationalData.minors, 'minor-faults-table', minorFaultAgg);
     populateManeuvresTable(dtcData, nationalData);
     populateTimeOfDayTable(dtcData);
-    populateSpeedLimitLinks(dtcData);
+    if (dtcData.address) {
+        populateSpeedLimitLinks(dtcData);
+    }
 }
 
 function populateFaultsTable(dtcFaults, nationalFaults, tableId, displayFunction) {
@@ -104,9 +106,9 @@ function populateManeuvresTable(dtcData, nationalData) {
 function populateTimeOfDayTable(dtcData) {
     const dayTypes = ['Mon-Fri', 'Saturday', 'Sunday'];
     const times = [...new Set(dtcData.times.map(td => td.time))].sort();
-    const avgDailyTests = dtcData.times.reduce((acc, td) => acc + td.dailyTests, 0) / dtcData.times.length;
-    const dailyTestThresholdToBlank = avgDailyTests / 5;
-    const table = `
+    const medianDailyTests = dtcData.times.map(td => td.dailyTests).sort()[Math.floor(dtcData.times.length / 2)];
+    const dailyTestThresholdToBlank = medianDailyTests / 5;
+    document.getElementById('time-of-day-table').innerHTML = `
         <thead>
             <tr>
                 <th>Time</th>
@@ -132,7 +134,6 @@ function populateTimeOfDayTable(dtcData) {
             `).join('')}
         </tbody>
     `;
-    document.getElementById('time-of-day-table').innerHTML = table;
     new DataTable('#time-of-day-table', {
         ordering: false,
         searching: false,
