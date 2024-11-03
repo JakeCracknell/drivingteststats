@@ -73,27 +73,83 @@
         </section>
 
         <section id="maneuvre-stats" class="pt-5">
-            <h2>Maneuvre Statistics</h2>
-            TODO reformat into a collapsable accordion and reword to avoid repetition...
-            <p>Each driving test should include one of four reversing maneuvres. Ideally, a third of tests will also include an emergency stop (or controlled stop). The table below shows the frequency of each maneuvre - how often it is requested, regardless of it was completed successfully. Fail % says how often a serious or dangerous fault was awarded, whilst doing this maneuvre. Pass rate shows the overall pass rate for tests that included this maneuvre. From this, we can derive the relative difficulty of each maneuvre.
+            <h2>Maneuver Statistics</h2>
 
-                Why is the frequency of each reversing maneuvres not 25% each?
-                On the whole, it should be, because the consensus is that the maneuvre is picked randomly before the test begins. Sometimes examiner must deviate from this choice. If traffic is busy, the candidate might be late back or there may not have been enough time to perform this chosen maneuvre. However, it is almost always possible to do a reverse bay park by finishing at the test centre. The examiner may be forced to choose this maneuvre. Remember, the 'forward bay park' also requires the candidate to reverse out of the bay, and it is rarely done at the test centre itself. Sufficient road space may not be available en route for the parallel park and 'reverse right' maneuvres.
-
-                Why does the sum of the reversing maneuvres' frequencies not add to 100%?
-                Candidates who have already made a dangerous fault will often be asked to drive back to the test centre immediately and directly. If a reversing maneuvre was not completed by then, it will be skipped. Where no maneuvre has been recorded, the pass rate is 0%.
-
-                Why does the overall pass rate not tally with the fault rate for each maneuvre?
-                There are a number of hypotheses. The most likely is that harder maneuvres are systematically paired with easier test routes. Furthermore, it is established that a reverse bay park is more frequently requested when the test is running behind schedule. Experienced drivers are more likely to complete the test route with time to spare whilst others will drive slower. Candidates who were ultimately asked to do a reverse bay park are statistically more likely to have faults for undue hesitation and driving too slowly.
-
-                Why is the emergency stop associated with higher pass rates?
-                This is counterintuitive, because the emergency stop is just one additional task to do and it cannot wipe out faults previously accumulated. Further, whether it is meant to be included is supposedly decided randomly before the test begins. However the causation is flipped.
-                * Most emergency stops are requested in the latter half of the test route. It can add 1-2 minutes to the test duration.
-                * Candidates who have already made a dangerous fault will often be asked to drive back to the test centre immediately and directly, without additional reversing maneuvres or the emergency stop.
-                * Candidates running late back due to traffic or being more hesitant won't be asked to do the emergency stop due to time. Such candidates are more likely to fail. Driving tests should not be seen as a race, but test duration is likely somewhat correlated with ability and pass rate.
-                * Experienced drivers are more likely to complete the test route with time to spare whilst others will drive slower and not have time for the emergency stop.
-
+            <p>
+                Each driving test includes one of four reversing maneuvres, with about a third also including an emergency stop (or controlled stop). The table below shows the frequency of each maneuvre request, regardless of whether it was completed. 'Fail %' reflects how often a serious or dangerous fault was given whilst doing the maneuvre itself - or alternatively, how likely is it to fail to complete this maneuvre and hence fail the test. From this, we can infer each maneuvre's relative difficulty. Pass rate shows the overall pass rate for tests that included this maneuvre. This is not the same thing!
+                <a class="text-primary" data-bs-toggle="collapse" href="#explainerCollapse" role="button" aria-expanded="false" aria-controls="explainerCollapse">
+                     What causes this disparity and why does this data not compute?
+                </a>
             </p>
+            <div class="collapse" id="explainerCollapse">
+                <div class="card card-body mt-3">
+                    <h5>Background Information</h5>
+                    <i>Disclaimer: I am not a driving examiner. ADIs have told me contradictory things. I have done my best to formulate a consensus.</i>
+                    <ol>
+                        <li>
+                            <strong>Random selection:</strong>
+                            DVSA software randomly chooses the specifics of your test for you on the day. This includes the route itself, the maneuvre, the show me/tell me questions and whether you are asked to do an emergency stop.
+                        </li>
+                        <li>
+                            <strong>Strict time schedules:</strong>
+                            If a test overruns, this could impact the next candidate's test. Examiners may need to amend the generated test to ensure it finishes on time.
+                        </li>
+                        <li>
+                            <strong>Maneuvring at the test centre:</strong>
+                            The fastest maneuvre to complete is a reverse bay park into a marked bay at the test centre at the end of the test. If the test is running late, this may be the only maneuvre you are asked to do.
+                        </li>
+                        <li>
+                            <strong>Emergency stop timing:</strong>
+                            The emergency stop is <i>usually</i> requested towards the end of the test. It can add 1-2 minutes to the test duration.
+                        </li>
+                        <li>
+                            <strong>Dangerous faults:</strong>
+                            Candidates who make a dangerous fault will usually be asked to drive back to the test centre immediately and directly. The test will end early.
+                        </li>
+                        <li><strong>Inexperienced drivers finish last:</strong>
+                            A driving test should not be conducted like a race, but the time taken to complete a test route is somewhat correlated with ability and therefore, pass rate. Conversely, a slower, more hesitant driver is at greater risk of arriving back late.
+                        </li>
+                    </ol>
+
+
+                    <h5>Why isn't the frequency of each reversing maneuver exactly 25%?</h5>
+                    <p>In theory, each maneuver should be randomly assigned, aiming for an even distribution across tests. However, opportunities to complete certain maneuvers may be impeded by traffic or parking availability. Point 3 explains why reverse bay parks are much more common in some test centres. Remember, the 'forward bay park' also requires the candidate to reverse out of the bay. It is rarely done at the test centre itself.
+                    </p>
+
+                    <h5>Why don't the reversing maneuvre frequencies add up to 100%?</h5>
+                    <p>See point 5. If the test is ended early, if the maneuvre has not been completed yet, it will be skipped entirely. In the 0.6% of tests where no maneuvre has been recorded, none of them passed.</p>
+
+                    <h5>Why don't 33% of tests have an emergency stop</h5>
+                    <p>In theory, exactly 1 in 3 tests should have an emergency stop. However, see point 5. If the test is ended early, the emergency stop will be skipped if it hasn't been done yet. Alternatively, it might be skipped due to point 2. Both reasons are compounded by point 4.</p>
+
+                    <h5>Why doesn't the overall pass rate align with fault rates for each maneuvre?</h5>
+                    <p>Here we delve into a more contentious topic. It is irrefutable that more candidates fail at parallel parking than any of the other maneuvres. So why is this not reflected in the overall pass rate?
+                    <ul>
+                        <li><strong>The reverse bay park backstop:</strong>
+                            Points 2, 3 and 6. Slow candidates are more likely to be assigned a reverse bay park. Those who ultimately completed this maneuvre statistically collected more faults for maintaining progress.
+                        </li>
+                        <li><strong>Faults within car parks:</strong>
+                            Completing a bay park maneuvre often requires entering a non-DVSA car park. Increased fail rates might be due to serious faults accumulated whilst traversing the car park, rather than the actual maneuvre.
+                        </li>
+                        <li>
+                            <strong>Route pairing:</strong>
+                            Harder maneuvers may be assigned to easier routes to balance overall difficulty.
+                        </li>
+                    </ul>
+
+                    <h5>Why is the emergency stop associated with higher pass rates?</h5>
+                    <p>Counterintuitively, despite being an additional task, candidates who were asked to complete an emergency stop tend to have higher pass rates.</p>
+                    <ul>
+                        <li><strong>Tests cut short:</strong>
+                            Per point 5, if the test must be ended early, the emergency stop will be skipped. This associates non-emergency-stoppers with the 7% cohort of drivers that had a dangerous fault.
+                        </li>
+                        <li><strong>Slow candidates:</strong>
+                            Points 2 and 6. Slow candidates are more likely to arrive back late. It is easy to skip the emergency stop if the test is running late. Per point 4, it is usually planned towards the end. Meanwhile, fast, experienced drivers have this time to spare and accumulate statistically fewer faults.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
             <div class="table-responsive">
                 <table id="maneuvre-table" class="table sortable-theme-bootstrap">
                     <thead>
@@ -130,7 +186,7 @@
             <a id="stop-signs-link" class="btn btn-primary" href="#" role="button" target="_blank">Stop Signs</a>
             
             <p>Use the buttons below to see a map of speed limits.</p>
-            <div id="speed-limit-links" class="btn-group">
+            <div id="speed-limit-links">
             </div>
 
         </section>
