@@ -59,7 +59,7 @@ function populateFaultsTable(dtcFaults, nationalFaults, tableId, displayFunction
                     <td>${displayFunction(centreValue)}</td>
                     <td>${displayFunction(nationalValue)}</td>
                     <td>${plusSign(difference)}${pct(difference)}</td>
-                    <td>${pct(differencePercentage)}</td>
+                    <td>${pct(differencePercentage, 0)}</td>
                 </tr>
             `;
         }
@@ -68,7 +68,7 @@ function populateFaultsTable(dtcFaults, nationalFaults, tableId, displayFunction
     table += '</tbody>';
     document.getElementById(tableId).innerHTML = table;
     new DataTable('#' + tableId, {
-        order: [[3, 'desc']],
+        order: [[4, 'desc']],
         searching: false,
         paging: false,
         info: false,
@@ -95,7 +95,7 @@ function populateManeuvresTable(dtcData, nationalData) {
     });
     document.getElementById('maneuvre-table-body').innerHTML = tbody;
     new DataTable('#maneuvre-table', {
-        order: [[3, 'desc']],
+        order: [[2, 'desc']],
         searching: false,
         paging: false,
         info: false,
@@ -122,7 +122,7 @@ function populateTimeOfDayTable(dtcData) {
                     ${dayTypes.map(dayType => {
                         const timeData = dtcData.times.find(td => td.dayType === dayType && td.time === time);
                         if (timeData) {
-                            const color = getRowColor(timeData.pass / dtcData.pass);
+                            const color = getRowColor(timeData.pass / dtcData.pass, false);
                             const opacity = timeData.dailyTests < dailyTestThresholdToBlank ? 0.25 : 1;
                             return `<td style="background-color: ${color}; opacity: ${opacity}">
                                     ${pct(timeData.pass)} (${timeData.dailyTests.toFixed(2)}/day)</td>`;
@@ -165,8 +165,8 @@ function populateSpeedLimitLinks(dtcData) {
 }
 
 
-function pct(value) {
-    return (value * 100).toFixed(2) + '%';
+function pct(value, fractionDigits = 2) {
+    return (value * 100).toFixed(fractionDigits) + '%';
 }
 
 function minorFaultAgg(value) {
@@ -178,11 +178,12 @@ function plusSign(value) {
 }
 
 // Between 0.5 and 1.5, measure distance. Alpha is 0.5 if far, 0=transparent if close (i.e. same as national average)
-function getRowColor(differencePercentage) {
-    const alpha = Math.abs(Math.max(0.5, Math.min(1.5, differencePercentage)) - 1);
-    if (differencePercentage > 1) {
-        return `rgba(var(--bs-danger-rgb), ${alpha})`;
-    } else {
+function getRowColor(differencePercentage, highIsBad = true) {
+    let alpha = Math.abs(Math.max(0.5, Math.min(1.5, differencePercentage)) - 1);
+    //alpha = highIsBad ? alpha : alpha * -1;
+    if (differencePercentage > 1.00 ^ highIsBad) {
         return `rgba(var(--bs-success-rgb), ${alpha})`;
+    } else {
+        return `rgba(var(--bs-danger-rgb), ${alpha})`;
     }
 }
