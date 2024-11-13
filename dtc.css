@@ -22,3 +22,8 @@ body {
     z-index: 1000;
     user-select: none;
 }
+
+/*Dear Bootstrap: do not override my colors */
+table>:not(caption)>*>* {
+    --bs-table-bg: transparent;
+}

@@ -1,16 +1,15 @@
 const id = new URLSearchParams(window.location.search).get('dtc');
 const dtcPath = `data/${id}.json`;
 const nationalPath = 'data/national.json';
+const faultDescriptionsPath = 'data/fault_descriptions.json';
 
 // Use Promise.all to load both files concurrently
-Promise.all([fetch(dtcPath), fetch(nationalPath)])
-    .then(async ([dtcResponse, nationalResponse]) => {
-        // Parse JSON from both responses
+Promise.all([fetch(dtcPath), fetch(nationalPath), fetch(faultDescriptionsPath)])
+    .then(async ([dtcResponse, nationalResponse, faultDescriptionsResponse]) => {
         const dtcData = await dtcResponse.json();
         const nationalData = await nationalResponse.json();
-
-        // Pass both datasets to onDataLoad for processing
-        onDataLoad(dtcData, nationalData);
+        const faultDescriptions = await faultDescriptionsResponse.json();
+        onDataLoad(dtcData, nationalData, faultDescriptions);
     })
     .catch(error => {
         console.error('Error loading data:', error);
@@ -18,15 +17,12 @@ Promise.all([fetch(dtcPath), fetch(nationalPath)])
 
 
 // Updated onDataLoad function to accept both DTC and national data
-function onDataLoad(dtcData, nationalData) {
+function onDataLoad(dtcData, nationalData, faultDescriptions) {
     document.title = document.title.replaceAll('@', dtcData.name);
     document.querySelectorAll('.dtc-name').forEach(el => el.innerHTML = dtcData.name);
     document.querySelectorAll('.dtc-pass-rate').forEach(el => el.innerHTML = pct(dtcData.pass));
-
-    console.log('DTC Data:', dtcData);
-    console.log('National Data:', nationalData);
-    populateFaultsTable(dtcData.fails, nationalData.fails, 'fail-faults-table', pct);
-    populateFaultsTable(dtcData.minors, nationalData.minors, 'minor-faults-table', minorFaultAgg);
+    populateFaultsTable(faultDescriptions, dtcData.fails, nationalData.fails, 'fail-faults-table', pct);
+    populateFaultsTable(faultDescriptions, dtcData.minors, nationalData.minors, 'minor-faults-table', minorFaultAgg);
     populateManeuvresTable(dtcData, nationalData);
     populateTimeOfDayTable(dtcData);
     if (dtcData.address) {
@@ -34,32 +30,37 @@ function onDataLoad(dtcData, nationalData) {
     }
 }
 
-function populateFaultsTable(dtcFaults, nationalFaults, tableId, displayFunction) {
+function populateFaultsTable(faultDescriptions, dtcFaults, nationalFaults, tableId, displayFunction) {
     let table = `
         <thead>
             <tr>
-                <th>Fault Category</th>
-                <th>This centre</th>
-                <th>National</th>
-                <th>Diff</th>
-                <th>Diff %</th>
+                <th class="all">Fault</th>
+                <th class="all">This centre</th>
+                <th class="all">UK</th>
+                <th class="all">Diff</th>
+                <th class="all">Diff %</th>
+                <th class="none">Scenarios where this is awarded</th>
+                <th class="none">Why this might be more common here</th>
             </tr>
         </thead>
         <tbody>
     `;
-    for (const [key, centreValue] of Object.entries(dtcFaults)) {
-        const nationalValue = nationalFaults[key];
+    for (const [faultName, centreValue] of Object.entries(dtcFaults)) {
+        const nationalValue = nationalFaults[faultName];
+        const faultDescription = faultDescriptions[faultName];
         if (nationalValue !== 0) {
             const difference = centreValue - nationalValue;
             const differencePercentage = centreValue / nationalValue;
             const rowColor = getRowColor(differencePercentage);
             table += `
-                <tr style="background-color: ${rowColor}">
-                    <td>${key}</td>
+                <tr style="background-color: ${rowColor}" data-fault-name="${faultName}">
+                    <td>${faultName}</td>
                     <td>${displayFunction(centreValue)}</td>
                     <td>${displayFunction(nationalValue)}</td>
                     <td>${plusSign(difference)}${pct(difference)}</td>
                     <td>${pct(differencePercentage, 0)}</td>
+                    <td><ul>${faultDescription.scenarios.map(scenario => `<li>${scenario}</li>`).join('\n')}</ul></td>
+                    <td><ul>${faultDescription.highReasons.map(reason => `<li>${reason}</li>`).join('\n')}</ul></td>
                 </tr>
             `;
         }
@@ -89,6 +90,7 @@ function populateManeuvresTable(dtcData, nationalData) {
                 <td>${pct(nationalManeuvre.maneuvre_fails)}</td>
                 <td>${pct(dtcManeuvre.pass)}</td>
                 <td>${pct(nationalManeuvre.pass)}</td>
+                <td>Details</td>
             </tr>
         `;
 
@@ -138,8 +140,7 @@ function populateTimeOfDayTable(dtcData) {
         ordering: false,
         searching: false,
         paging: false,
-        info: false,
-        responsive: true
+        info: false
     });
 }
 
