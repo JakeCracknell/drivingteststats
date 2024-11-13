@@ -68,13 +68,13 @@ function populateFaultsTable(faultDescriptions, dtcFaults, nationalFaults, table
 
     table += '</tbody>';
     document.getElementById(tableId).innerHTML = table;
-    new DataTable('#' + tableId, {
+    addRowClickAbility(new DataTable('#' + tableId, {
         order: [[4, 'desc']],
         searching: false,
         paging: false,
         info: false,
         responsive: true
-    })
+    }));
 }
 
 function populateManeuvresTable(dtcData, nationalData) {
@@ -96,13 +96,19 @@ function populateManeuvresTable(dtcData, nationalData) {
 
     });
     document.getElementById('maneuvre-table-body').innerHTML = tbody;
-    new DataTable('#maneuvre-table', {
+    addRowClickAbility(new DataTable('#maneuvre-table', {
         order: [[2, 'desc']],
         searching: false,
         paging: false,
         info: false,
         responsive: true
-    })
+    }));
+}
+
+function addRowClickAbility(datatable) {
+    datatable.on('click', 'td:not(.dtr-control)', function () {
+        $(this).closest('tr').find('td:first-child').click();
+    });
 }
 
 function populateTimeOfDayTable(dtcData) {
