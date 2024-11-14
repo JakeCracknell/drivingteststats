@@ -45,7 +45,7 @@ function onDataLoad(dtcData, nationalData, faultDescriptions) {
     populateManeuvresTable(dtcData, nationalData);
     populateTimeOfDayTable(dtcData);
     if (dtcData.address) {
-        populateSpeedLimitLinks(dtcData);
+        populateLocalAreaLinks(dtcData);
     }
 }
 
@@ -173,7 +173,7 @@ function populateTimeOfDayTable(dtcData) {
     });
 }
 
-function populateSpeedLimitLinks(dtcData) {
+function populateLocalAreaLinks(dtcData) {
     const zoomLevel = `12`;
     function buildSpeedLimitLink(speedLimitQuery, text) {
         return `<a href="https://iandees.github.io/TIGERMap/docs/WorldMap/?filter=highway;${speedLimitQuery}#map=${zoomLevel}/${dtcData.address.latitude}/${dtcData.address.longitude}" target="_blank">${text}</a>`;
@@ -188,10 +188,13 @@ function populateSpeedLimitLinks(dtcData) {
     const allLinks = [...absolutes, ...mins, nsl];
     document.getElementById('speed-limit-links').innerHTML = allLinks.join('\n');
 
-
     document.getElementById('stop-signs-link').href = `https://overpass-turbo.eu/?Q=node%5Bhighway%3Dstop%5D%28%7B%7Bbbox%7D%7D%29%3Bout%3B&C=${dtcData.address.latitude}%3B${dtcData.address.longitude}%3B${zoomLevel}&R=`;
     document.getElementById('google-maps-link').href = `https://www.google.com/maps/search/?api=1&query=${dtcData.address.latitude},${dtcData.address.longitude}`;
     document.getElementById('osm-link').href = `https://www.openstreetmap.org/?mlat=${dtcData.address.latitude}&mlon=${dtcData.address.longitude}&zoom=${zoomLevel}`;
+
+    const cleanedName = dtcData.name.replace(/\(.*\)/g, '').trim();
+    const searchQuery = encodeURIComponent(`${cleanedName} driving test route site:plotaroute.com/route/`);
+    document.getElementById('route-search-link').href = `https://www.google.com/search?q=${searchQuery}`;
 }
 
 

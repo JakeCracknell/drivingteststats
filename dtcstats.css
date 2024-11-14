@@ -27,3 +27,13 @@ body {
 table>:not(caption)>*>* {
     --bs-table-bg: transparent;
 }
+
+/*Shouldn't be necessary, but otherwise the colors are broken in the navbar and the tables. Tried many fixes.*/
+.navbar-nav .nav-link.active {
+    color: white;
+}
+
+#time-of-day-table > tbody > tr:last-child {
+    border-top: 2px solid #dee2e6;
+    font-weight: 600
+}
