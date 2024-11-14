@@ -3,6 +3,14 @@ const dtcPath = `data/${id}.json`;
 const nationalPath = 'data/national.json';
 const faultDescriptionsPath = 'data/fault_descriptions.json';
 
+const maneuvreDetails = {
+    "Emergency stop": "Following a briefing, you will be directed to drive straight ahead. The examiner will say 'Stop!' and you must brake quickly and safely. Then drive on. You must perform 360\u00b0 observations before moving off.",
+    "Forward bay park": "Drive forwards into any parking bay on the left or right. You must finish within the lines, but you don't need to be straight and you can readjust. Then reverse out. You must perform 360\u00b0 observations before reversing and maintain good awareness throughout.",
+    "Parallel park": "Pull up alongside a parked car chosen by the examiner. Reverse in and park reasonably close (~30 cm max) and parallel to the kerb and within two car lengths of the parked car. You may readjust. You must perform 360\u00b0 observations before reversing and maintain good awareness throughout.",
+    "Reverse bay park": "Reverse into any parking bay on the left or right. You must finish within the lines, but you don't need to be straight and you can readjust. You must perform 360\u00b0 observations before reversing and maintain good awareness throughout. This might be carried out in the test centre car park.",
+    "Reverse right": "Pull up on the right-hand side of the road. Reverse back two car lengths, keeping reasonably close to the kerb (~30 cm max). Then rejoin the traffic. You must perform 360\u00b0 observations before reversing and maintain good awareness throughout."
+}
+
 // Use Promise.all to load both files concurrently
 Promise.all([fetch(dtcPath), fetch(nationalPath), fetch(faultDescriptionsPath)])
     .then(async ([dtcResponse, nationalResponse, faultDescriptionsResponse]) => {
@@ -80,6 +88,7 @@ function populateFaultsTable(faultDescriptions, dtcFaults, nationalFaults, table
 function populateManeuvresTable(dtcData, nationalData) {
     let tbody = '';
     dtcData.maneuvres.forEach(dtcManeuvre => {
+        const details = maneuvreDetails[dtcManeuvre.name];
         const nationalManeuvre = nationalData.maneuvres.find(nm => nm.name === dtcManeuvre.name);
         const rowColor = getRowColor(1 + (dtcManeuvre.maneuvre_fails * 4)); //for more contrasting colours
         tbody += `
@@ -90,7 +99,7 @@ function populateManeuvresTable(dtcData, nationalData) {
                 <td>${pct(nationalManeuvre.maneuvre_fails)}</td>
                 <td>${pct(dtcManeuvre.pass)}</td>
                 <td>${pct(nationalManeuvre.pass)}</td>
-                <td>Details</td>
+                <td>${details}</td>
             </tr>
         `;
 
