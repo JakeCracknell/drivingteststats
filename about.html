@@ -29,33 +29,42 @@
         </div>
     </nav>
 
-    <h1>About</h1>
-    <p>
-    </p>
-    <p>
-        In 2024, I was interested to know the precise reasons why the driving test pass rate varied so much between test centres across the UK. I made a Freedom of Information request to the DVSA through WhatDoTheyKnow (https://www.whatdotheyknow.com/request/driving_test_fault_statistics_by), and they provided me with detailed statistics on the faults recorded for each driving test and when and where those test were conducted. Over one million anaonymised test sheets were provided, covering most of 2023.
+    <div class="container mt-5 pt-5">
+        <h1>About</h1>
+        <p>In 2024, I became interested in understanding why the driving test pass rate varied so significantly between test centres across the UK. I wanted the precise reasons - it's not enough to say the roads in area X are harder in general. I submitted a <a href="https://www.whatdotheyknow.com/request/driving_test_fault_statistics_by" target="_blank">Freedom of Information request</a> to the DVSA, and received detailed statistics on the faults recorded for each driving test. The dataset includes over one million anonymised test sheets from 2023, with dates, times and locations.</p>
 
+        <p>With this data, it is now possible to see:</p>
+        <ul>
+            <li>Which faults are disproportionately recorded at each test centre compared to the national average.</li>
+            <li>Whether there is any advantage to taking your test at a specific time of day (spoiler: not really).</li>
+            <li>Which maneuvres are most challenging, and how they affect your chances of passing.</li>
+        </ul>
 
+        <p>Due to limited test slot availability, many candidates cannot book their preferred, nearby test centre and must consider unfamiliar locations, located hours away. This website aims to help you prepare for your test by understanding what makes each centre unique—perhaps even helping you select a test centre suited to your strengths and weaknesses. For instance, if you're confident with observations but struggle with making the most of fast roads, avoid centres where more candidates fail for "Progress - speed," and don't be discouraged by higher rates of "Junctions - observations" faults. If you are stuck with one particular test centre, at the very least, you know what to focus on</p>
 
-        It is now possible to see:
-        * For each test centre, what faults are disproportionately recorded compared to the national average.
-        * Is there any advantage to taking your test at a certain time of day?
-        * Which maneuvres are the hardest and how does this influence your chances of passing.
+        <p>This project is <a href="https://github.com/JakeCracknell/drivingteststats" target="_blank">open-source on GitHub</a>. There, you’ll find:</p>
+        <ul>
+            <li>All raw data provided by the DVSA in CSV format</li>
+            <li>Aggregated data used on this website</li>
+            <li>Hand-crafted explanations for each fault. This is ideally something the DVSA would publish, rather than leaving individuals like myself to piece it together from <a href="https://www.gov.uk/guidance/understanding-your-driving-test-result/car-driving-test" target="_blank">the vague guidance on GOV.UK</a> and mock test clips on YouTube</li>
+            <li>Python scripts used to process and aggregate the raw data</li>
+            <li>The website's front-end code</li>
+        </ul>
 
-        Many candidates cannot find a test slot at their preferred, nearest test centre. Instead they must expand their search to other test centres, including those in areas they are unfamiliar with.
+        <p>I hope this resource helps you as much as it has helped me in researching the nuances of each test centre. Good luck with your driving test!</p>
 
-        My hope is that you can use this website to help you practice for your test and learn what makes your test centre harder or easier than others. It might even persuade you to choose one test centre over another if you struggle with particular things. Great at observations, but struggle to make the most out of fast roads? Then avoid places where more people than usual fail for 'Progress - speed' and don't be put off by a higher 'Junctions - observations' fault rate.
+        <p>If you spot any errors in the data or explanations, feel free to raise an issue or submit a pull request on GitHub.</p>
 
-        This project is open-source. On GitHub (https://github.com/JakeCracknell/drivingteststats), you will find:
-        * All raw data I was provided by the DVSA
-        * Aggregated data used by this website
-        * Hand-crafted explanations for each fault - this should really be published by the DVSA, not left to unqualified people like me to piece together from https://www.gov.uk/guidance/understanding-your-driving-test-result/car-driving-test and scouring YouTube for examples
-        * Python scripts I wrote to aggregate the raw data
-        * The front end code for the website
+        <ul>
+            <li>
+                <a href="https://x.com/drspa44" target="_blank">Twitter</a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/jake-cracknell-b32006b9" target="_blank">LinkedIn</a>
+            </li>
+        </ul>
+    </div>
 
-        I hope this data helps you as much as it has helped me research the particulars of a test centre. Good luck with your driving test!
-
-        If you see something wrong with the data or my explanations, feel free to raise an issue or pull request on GitHub.
-    </p>
 </body>
+
 </html>
