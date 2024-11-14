@@ -47,7 +47,7 @@ function populateFaultsTable(faultDescriptions, dtcFaults, nationalFaults, table
                 <th class="all">UK</th>
                 <th class="all">Diff</th>
                 <th class="all">Diff %</th>
-                <th class="none">Scenarios where this is awarded</th>
+                <th class="none">Typical situations causing this fault</th>
                 <th class="none">Why this might be more common here</th>
             </tr>
         </thead>
@@ -57,6 +57,9 @@ function populateFaultsTable(faultDescriptions, dtcFaults, nationalFaults, table
         const nationalValue = nationalFaults[faultName];
         const faultDescription = faultDescriptions[faultName];
         if (nationalValue !== 0) {
+            if (faultDescription.highReasons.length === 0) {
+                faultDescription.highReasons.push('N/A');
+            }
             const difference = centreValue - nationalValue;
             const differencePercentage = centreValue / nationalValue;
             const rowColor = getRowColor(differencePercentage);
