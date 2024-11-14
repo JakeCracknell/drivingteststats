@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About | Driving Test Centre Statistics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CHW20N4320"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CHW20N4320');
+</script>
+
+<body>
+
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="./">Test Centre Stats - About</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <h1>About</h1>
+    <p>
+    </p>
+    <p>
+        In 2024, I was interested to know the precise reasons why the driving test pass rate varied so much between test centres across the UK. I made a Freedom of Information request to the DVSA through WhatDoTheyKnow (https://www.whatdotheyknow.com/request/driving_test_fault_statistics_by), and they provided me with detailed statistics on the faults recorded for each driving test and when and where those test were conducted. Over one million anaonymised test sheets were provided, covering most of 2023.
+
+
+
+        It is now possible to see:
+        * For each test centre, what faults are disproportionately recorded compared to the national average.
+        * Is there any advantage to taking your test at a certain time of day?
+        * Which maneuvres are the hardest and how does this influence your chances of passing.
+
+        Many candidates cannot find a test slot at their preferred, nearest test centre. Instead they must expand their search to other test centres, including those in areas they are unfamiliar with.
+
+        My hope is that you can use this website to help you practice for your test and learn what makes your test centre harder or easier than others. It might even persuade you to choose one test centre over another if you struggle with particular things. Great at observations, but struggle to make the most out of fast roads? Then avoid places where more people than usual fail for 'Progress - speed' and don't be put off by a higher 'Junctions - observations' fault rate.
+
+        This project is open-source. On GitHub (https://github.com/JakeCracknell/drivingteststats), you will find:
+        * All raw data I was provided by the DVSA
+        * Aggregated data used by this website
+        * Hand-crafted explanations for each fault - this should really be published by the DVSA, not left to unqualified people like me to piece together from https://www.gov.uk/guidance/understanding-your-driving-test-result/car-driving-test and scouring YouTube for examples
+        * Python scripts I wrote to aggregate the raw data
+        * The front end code for the website
+
+        I hope this data helps you as much as it has helped me research the particulars of a test centre. Good luck with your driving test!
+
+        If you see something wrong with the data or my explanations, feel free to raise an issue or pull request on GitHub.
+    </p>
+</body>
+</html>
