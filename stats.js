@@ -47,6 +47,8 @@ function onDataLoad(dtcData, nationalData, faultDescriptions) {
     if (dtcData.address) {
         populateLocalAreaLinks(dtcData);
     }
+    document.getElementById('loading-overlay').style.display = 'none';
+    $('#loading-overlay').hide();
 }
 
 function populateFaultsTable(faultDescriptions, dtcFaults, nationalFaults, tableId, displayFunction) {
