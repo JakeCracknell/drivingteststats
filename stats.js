@@ -29,6 +29,8 @@ function onDataLoad(dtcData, nationalData, faultDescriptions) {
     document.title = document.title.replaceAll('@', dtcData.name);
     document.querySelectorAll('.dtc-name').forEach(el => el.innerHTML = dtcData.name);
     document.querySelectorAll('.dtc-pass-rate').forEach(el => el.innerHTML = pct(dtcData.pass));
+    document.getElementById('dtc-address').innerHTML = [1,2,3,4,5]
+        .map(x => dtcData.address['addrLine' + x].trim()).filter(x => x).concat(dtcData.address.postcode).join(', ');
     populateFaultsTable(faultDescriptions, dtcData.fails, nationalData.fails, 'fail-faults-table', pct);
     populateFaultsTable(faultDescriptions, dtcData.minors, nationalData.minors, 'minor-faults-table', minorFaultAgg);
     populateManeuvresTable(dtcData, nationalData);
