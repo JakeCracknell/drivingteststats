@@ -58,16 +58,16 @@
     <div class="container my-5 pt-4">
         <section id="overview" class="">
             <h1 class="dtc-name display-5">@</h1>
-            <p class="lead">The overall pass rate for <span class="dtc-name">@</span> is <span class="dtc-pass-rate">@</span>. The data below shows why people fail here.</p>
+            <p class="lead">The overall pass rate for <span class="dtc-name">@</span> is <span class="dtc-pass-rate">@</span>. The data below shows <span class="fst-italic">why</span> people their driving test fail here.</p>
             <p>
-                A <a href="about.html">Freedom of Information request</a> has revealed detailed statistics on the faults recorded for each driving test centre. This page shows which fault categories are most common at each test centre, and crucially, how these compare to the UK national average. Use this to help you practice for your test and learn what makes your test centre harder or easier than others.
+                A <a href="about.html">Freedom of Information request</a> has revealed detailed statistics on the faults recorded for each driving test centre. This page shows which fault categories are most common at each test centre, and crucially, how these compare to the UK national average. Use this data to help you practice for your test and learn what makes your test centre harder or easier than others.
             </p>
-            <p>Pay extra attention to faults colored in <span class="text-danger fw-bold">red</span>, as they are found more frequently at <span class="dtc-name">@</span> than other test centres. Be thankful that faults colored in <span class="text-success fw-bold">green</span> are less common here.</p>
+            <p>Pay extra attention to faults colored in <span class="text-danger bg-danger-subtle fw-bold">red</span>, as they are found more frequently at <span class="dtc-name">@</span> than other test centres. Be thankful that faults colored in <span class="text-success bg-success-subtle fw-bold">green</span> are less common here. Click on faults to see more information.</p>
         </section>
 
         <section id="serious-faults" class="pt-5">
             <h2>Serious and Dangerous Faults</h2>
-            <p>A serious or dangerous fault will result in a fail. A figure of 5% means that 5% of tests had either a S/D fault recorded and therefore, 5% of people failed wholly or partially for this reason.</p>
+            <p>A serious or dangerous fault will result in a fail. A figure of 5% means that 5% of tests had either a S/D fault recorded and therefore, 5% of people failed wholly or partially for this fault category.</p>
             <div class="table-responsive">
                 <table id="fail-faults-table" class="table table-sm"></table>
             </div>
@@ -75,7 +75,8 @@
 
         <section id="driver-faults" class="pt-5">
             <h2>Driver Faults</h2>
-            <p>Driver faults are minor mistakes. If a candidate accumulates too many in a single category, they will be replaced with a single serious fault. Accumulating 16 driver faults in total can also result in a fail. As you can get multiple driver faults in the same category,displayed below are absolute figures, not percentages. If <i>every</i> candidate got two driver faults for steering, this will show as 2.0.</p>
+            <p>Driver faults are minor mistakes. If a candidate accumulates too many in a single category, they will be zeroed and replaced with a single serious fault. Accumulating 16 driver faults in total can also result in a fail. As you can get multiple driver faults in the same category, displayed below are absolute figures, not percentages. If <i>every</i> candidate got two driver faults for steering, this will show as 2.0.</p>
+            <p>Sum these, and you will see, <span class="fw-semibold"> an average test has <span class="dtc-minors-count"></span> driver faults, compared to <span class="national-minors-count"></span> nationally. Meanwhile, <span class="dtc-any-minors"></span> of drivers passed with zero faults, compared to <span class="national-any-minors"></span> nationally.</span></p>
             <div class="table-responsive">
                 <table id="minor-faults-table" class="table table-sm"></table>
             </div>
@@ -83,11 +84,10 @@
 
         <section id="maneuvre-stats" class="pt-5">
             <h2>Maneuver Statistics</h2>
-
             <p>
-                Each driving test includes one of four reversing maneuvres, with about a third also including an emergency stop (or controlled stop). The table below shows the frequency of each maneuvre request, regardless of whether it was completed. 'Fail %' reflects how often a serious or dangerous fault was given whilst doing the maneuvre itself - or alternatively, how likely is it to fail to complete this maneuvre and hence fail the test. From this, we can infer each maneuvre's relative difficulty. Pass rate shows the overall pass rate for tests that included this maneuvre. This is not the same thing!
+                Each driving test includes one of four reversing maneuvres, with about a third also including an emergency stop (or controlled stop). The table below shows the frequency of each maneuvre. 'Fail %' reflects how often a serious or dangerous fault was given whilst doing the maneuvre itself - i.e. how likely is it to fail to complete this maneuvre and hence fail the test. From this, we can infer each maneuvre's relative difficulty. Pass rate is completely different - it shows the overall pass rate for tests that included this maneuvre.
                 <a class="text-primary" data-bs-toggle="collapse" href="#explainerCollapse" role="button" aria-expanded="false" aria-controls="explainerCollapse">
-                     What causes this disparity and why does this data not compute?
+                     What causes this disparity and why does this data not compute? (long)
                 </a>
             </p>
             <div class="collapse" id="explainerCollapse">
@@ -193,7 +193,14 @@
             <p>View this area in <a id="google-maps-link" href="#"  target="_blank">Google Maps</a></p>
             <p><a id="osm-link" href="#"  target="_blank">OpenStreetMap</a> can be useful as a research aid, but be warned that its accuracy and completeness can vary, depending on the area. If you find mistakes, why not consider fixing it? Most satnavs directly or indirectly use OSM for speed limits - you might just save another learner from speeding during their test! These links display roads based on the tagged speed limits:</p>
             <p id="speed-limit-links"></p>
-            <p>See all reported <a id="stop-signs-link" href="#" target="_blank">stop signs</a> on a map</p>
+            <p>See all reported <a id="stop-signs-link" href="#" target="_blank">stop signs</a> on a map.</p>
+        </section>
+
+        <section id="about-the-data" class="pt-5">
+            <div class="alert alert-primary" role="alert">
+                <p>This page was created in Novemeber 2024 and the data covers all <span class="dtc-test-count"></span> tests between April 2023 and October 2023</p>
+                <a href="about.html">About the data and the author</a>
+            </div>
         </section>
     </div>
 

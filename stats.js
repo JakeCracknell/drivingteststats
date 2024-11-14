@@ -29,8 +29,17 @@ function onDataLoad(dtcData, nationalData, faultDescriptions) {
     document.title = document.title.replaceAll('@', dtcData.name);
     document.querySelectorAll('.dtc-name').forEach(el => el.innerHTML = dtcData.name);
     document.querySelectorAll('.dtc-pass-rate').forEach(el => el.innerHTML = pct(dtcData.pass));
-    document.getElementById('dtc-address').innerHTML = [1,2,3,4,5]
-        .map(x => dtcData.address['addrLine' + x].trim()).filter(x => x).concat(dtcData.address.postcode).join(', ');
+    document.querySelectorAll('.dtc-test-count').forEach(el => el.innerHTML = dtcData.totalTestCount);
+    document.querySelectorAll('.dtc-minors-count').forEach(el => el.innerHTML = dtcData.minor_count.toFixed(2));
+    document.querySelectorAll('.national-minors-count').forEach(el => el.innerHTML = nationalData.minor_count.toFixed(2));
+    document.querySelectorAll('.dtc-any-minors').forEach(el => el.innerHTML = pct(1 - dtcData.minor_any));
+    document.querySelectorAll('.national-any-minors').forEach(el => el.innerHTML = pct(1 - nationalData.minor_any));
+
+    if (dtcData.address) {
+        document.getElementById('dtc-address').innerHTML = [1, 2, 3, 4, 5]
+            .map(x => dtcData.address['addrLine' + x].trim()).filter(x => x)
+            .concat(dtcData.address.postcode).join(', ');
+    }
     populateFaultsTable(faultDescriptions, dtcData.fails, nationalData.fails, 'fail-faults-table', pct);
     populateFaultsTable(faultDescriptions, dtcData.minors, nationalData.minors, 'minor-faults-table', minorFaultAgg);
     populateManeuvresTable(dtcData, nationalData);
