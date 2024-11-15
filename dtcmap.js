@@ -8,22 +8,6 @@ const map = new mapboxgl.Map({
     maxZoom: 15,
 });
 
-function getHtmlForPopup(dtc) {
-    let html =  '<h3>' + dtc.name + '</h3>';
-    html += '<p>Pass Rate: ' + (100 * dtc.pass).toFixed(2) + '%</p>';
-    if (dtc.dailyTestCount < 1) {
-        html += '<p>Capacity: ' + (dtc.dailyTestCount * 30).toFixed(1) + ' tests per month</p>';
-    } else if (dtc.dailyTestCount < 3) {
-        html += '<p>Capacity: ' + (dtc.dailyTestCount * 7).toFixed(1) + ' tests per week</p>';
-    } else {
-        html += '<p>Capacity: ' + dtc.dailyTestCount.toFixed(1) + ' tests per day</p>';
-    }
-    html += '<p>Postcode: ' + dtc.postcode + '</p>';
-    html += `<p><a href="stats.html?dtc=${dtc.id}&name=${dtc.name}" target="_blank">See detailed fault statistics</a></p>`;
-    return html;
-}
-
-
 
 fetch('data/dtcs.geojson')
     .then(response => response.json())
@@ -157,4 +141,25 @@ function addLayersToMap(data) {
     map.on('mouseleave', 'dtc', function () {
         map.getCanvas().style.cursor = '';
     });
+}
+
+function getHtmlForPopup(dtc) {
+    let html =  `<h3>${dtc.name}</h3>`;
+    html += `<p>Pass Rate: ${(100 * dtc.pass).toFixed(2)}% ${getEmojiForPassRate(dtc.pass)}</p>`;
+    if (dtc.dailyTestCount < 1) {
+        html += `<p>Capacity: ${(dtc.dailyTestCount * 30).toFixed(1)} tests per month</p>`;
+    } else if (dtc.dailyTestCount < 3) {
+        html += `<p>Capacity: ${(dtc.dailyTestCount * 7).toFixed(1)} tests per week</p>`;
+    } else {
+        html += `<p>Capacity: ${dtc.dailyTestCount.toFixed(1)} tests per day</p>`;
+    }
+    html += `<p>Postcode: ${dtc.postcode}</p>`;
+    html += `<p><a href="stats.html?dtc=${dtc.id}&name=${dtc.name}" target="_blank">See detailed fault statistics</a></p>`;
+    return html;
+}
+
+function getEmojiForPassRate(pass) {
+    const intervals = [0.4, 0.45, 0.5, 0.55, 0.65, 1.0];
+    const emojis = ['😡', '😠', '😐', '😊', '😃', '🤩'];
+    return emojis[intervals.findIndex(i => pass <= i)];
 }
