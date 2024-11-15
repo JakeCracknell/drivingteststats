@@ -120,7 +120,6 @@ function addLayersToMap(data) {
     });
 
     map.on('click', 'dtc', function (e) {
-        map.setFilter('dtc-outline', ['==', 'id', e.features[0].properties.id]);
         map.setFilter('dtc', ['!=', 'id', e.features[0].properties.id]);
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
