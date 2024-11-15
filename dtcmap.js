@@ -124,24 +124,22 @@ function onDtcClick(e) {
         '&contours_minutes=15&polygons=true&exclude=motorway,toll,ferry,unpaved';
     fetch(url)
         .then(response => response.json())
-        .then(data => {
-            map.getSource('isochrone').setData(data);
-        })
+        .then(data => map.getSource('isochrone').setData(data))
         .catch(error => console.error('Error loading isochrone data:', error));
 }
 
 function getHtmlForPopup(dtc) {
     let html =  `<h3>${dtc.name}</h3>`;
-    html += `<p>Pass Rate: ${(100 * dtc.pass).toFixed(2)}% ${getEmojiForPassRate(dtc.pass)}</p>`;
+    html += `<b>Pass Rate:</b> ${(100 * dtc.pass).toFixed(2)}% ${getEmojiForPassRate(dtc.pass)}`;
     if (dtc.dailyTestCount < 1) {
-        html += `<p>Capacity: ${(dtc.dailyTestCount * 30).toFixed(1)} tests per month</p>`;
+        html += `<br><b>Capacity:</b> ${(dtc.dailyTestCount * 30).toFixed(1)} tests per month`;
     } else if (dtc.dailyTestCount < 3) {
-        html += `<p>Capacity: ${(dtc.dailyTestCount * 7).toFixed(1)} tests per week</p>`;
+        html += `<br><b>Capacity:</b> ${(dtc.dailyTestCount * 7).toFixed(1)} tests per week`;
     } else {
-        html += `<p>Capacity: ${dtc.dailyTestCount.toFixed(1)} tests per day</p>`;
+        html += `<br><b>Capacity:</b> ${dtc.dailyTestCount.toFixed(1)} tests per day`;
     }
-    html += `<p>Postcode: ${dtc.postcode}</p>`;
-    html += `<p><a href="stats.html?dtc=${dtc.id}&name=${dtc.name}" target="_blank">See detailed fault statistics</a></p>`;
+    html += `<br><b>Postcode:</b> ${dtc.postcode}`;
+    html += `<br><a href="stats.html?dtc=${dtc.id}&name=${dtc.name}" target="_blank">See detailed fault statistics</a>`;
     return html;
 }
 
