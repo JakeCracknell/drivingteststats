@@ -46,6 +46,13 @@ table>:not(caption)>*>* {
     color: white;
 }
 
+.navbar-brand {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 75%;
+}
+
 #time-of-day-table > tbody > tr:last-child {
     border-top: 2px solid #dee2e6;
     font-weight: 600

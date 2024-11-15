@@ -93,7 +93,7 @@ function populateFaultsTable(faultDescriptions, dtcFaults, nationalFaults, table
     table += '</tbody>';
     document.getElementById(tableId).innerHTML = table;
     addRowClickAbility(new DataTable('#' + tableId, {
-        order: [[4, 'desc']],
+        order: [[3, 'desc']],
         searching: false,
         paging: false,
         info: false,
