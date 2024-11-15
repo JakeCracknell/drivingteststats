@@ -7,12 +7,11 @@ const map = new mapboxgl.Map({
     minZoom: 5,
     maxZoom: 15,
 });
-
-
 fetch('data/dtcs.geojson')
     .then(response => response.json())
     .then(data => map.on('load', () => addLayersToMap(data)))
     .catch(error => console.error('Error loading GeoJSON data:', error));
+
 
 function addLayersToMap(data) {
     data.features.forEach(f => {
@@ -20,13 +19,11 @@ function addLayersToMap(data) {
             .replaceAll(' (Liverpool)', '')
             .replaceAll(' (Manchester)', '');
         f.properties.label = f.properties.shortName + ' ' + (100 * f.properties.pass).toFixed(0) + '%';
-
     });
     map.addSource('dtc', {
         type: 'geojson',
         data: data
     });
-
     map.addLayer({
         'id': 'dtc',
         'type': 'fill',
@@ -36,7 +33,6 @@ function addLayersToMap(data) {
             'fill-opacity': 0.7,
         },
     });
-
     map.addLayer({
         'id': 'dtc-outline',
         'type': 'line',
@@ -46,8 +42,6 @@ function addLayersToMap(data) {
             'line-width': 1,
         },
     });
-
-    //create source of points using features from data
     map.addSource('dtc-points', {
         type: 'geojson',
         data: {
@@ -62,8 +56,6 @@ function addLayersToMap(data) {
             }))
         }
     });
-
-
     map.addLayer({
         'id': 'dtc-circle',
         'type': 'circle',
@@ -83,7 +75,6 @@ function addLayersToMap(data) {
             'circle-opacity': 1.0,
         },
     });
-
     map.addLayer({
         'id': 'dtc-label',
         'type': 'symbol',
@@ -118,28 +109,25 @@ function addLayersToMap(data) {
             'fill-opacity': 0.3,
         },
     });
+    map.on('click', 'dtc', onDtcClick);
+    map.on('mouseenter', 'dtc', () => map.getCanvas().style.cursor = 'pointer');
+    map.on('mouseleave', 'dtc', () => map.getCanvas().style.cursor = '');
+}
 
-    map.on('click', 'dtc', function (e) {
-        map.setFilter('dtc', ['!=', 'id', e.features[0].properties.id]);
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(getHtmlForPopup(e.features[0].properties))
-            .addTo(map);
-        const url = `https://api.mapbox.com/isochrone/v1/mapbox/driving-traffic/${e.features[0].properties.longitude},${e.features[0].properties.latitude}?access_token=${mapboxgl.accessToken}` +
-            '&contours_minutes=15&polygons=true&exclude=motorway,toll,ferry,unpaved';
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                map.getSource('isochrone').setData(data);
-            })
-            .catch(error => console.error('Error loading isochrone data:', error));
-    });
-    map.on('mouseenter', 'dtc', function () {
-        map.getCanvas().style.cursor = 'pointer';
-    });
-    map.on('mouseleave', 'dtc', function () {
-        map.getCanvas().style.cursor = '';
-    });
+function onDtcClick(e) {
+    map.setFilter('dtc', ['!=', 'id', e.features[0].properties.id]);
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(getHtmlForPopup(e.features[0].properties))
+        .addTo(map);
+    const url = `https://api.mapbox.com/isochrone/v1/mapbox/driving-traffic/${e.features[0].properties.longitude},${e.features[0].properties.latitude}?access_token=${mapboxgl.accessToken}` +
+        '&contours_minutes=15&polygons=true&exclude=motorway,toll,ferry,unpaved';
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            map.getSource('isochrone').setData(data);
+        })
+        .catch(error => console.error('Error loading isochrone data:', error));
 }
 
 function getHtmlForPopup(dtc) {
