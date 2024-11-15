@@ -81,7 +81,7 @@ function populateFaultsTable(faultDescriptions, dtcFaults, nationalFaults, table
                     <td>${faultName}</td>
                     <td>${displayFunction(centreValue)}</td>
                     <td>${displayFunction(nationalValue)}</td>
-                    <td>${plusSign(difference)}${pct(difference)}</td>
+                    <td>${plusSign(difference)}${displayFunction(difference)}</td>
                     <td>${pct(differencePercentage, 0)}</td>
                     <td><ul>${faultDescription.scenarios.map(scenario => `<li>${scenario}</li>`).join('\n')}</ul></td>
                     <td><ul>${faultDescription.highReasons.map(reason => `<li>${reason}</li>`).join('\n')}</ul></td>
