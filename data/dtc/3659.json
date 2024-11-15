@@ -1,0 +1,272 @@
+{
+    "minors": {
+        "Eyesight": 0.0,
+        "Emergency stop": 0.022284122562674095,
+        "Reverse right - control": 0.027506963788300837,
+        "Reverse right - observation": 0.035515320334261836,
+        "Parallel park - control": 0.08565459610027855,
+        "Parallel park - observation": 0.03795264623955432,
+        "Reverse bay park - control": 0.09644846796657382,
+        "Reverse bay park - observation": 0.04735376044568245,
+        "Vehicle checks": 0.08948467966573816,
+        "Forward bay park - control": 0.056406685236768804,
+        "Forward bay park - observation": 0.019846796657381614,
+        "Precautions": 0.001392757660167131,
+        "Control - accelerator": 0.004526462395543176,
+        "Control - clutch": 0.02924791086350975,
+        "Control - gears": 0.1674791086350975,
+        "Control - Footbrake": 0.025069637883008356,
+        "Control - parking brake": 0.016713091922005572,
+        "Control - steering": 0.2983983286908078,
+        "Move off - safely": 0.30675487465181056,
+        "Move off - control": 0.38440111420612816,
+        "Mirrors - signalling": 0.11768802228412256,
+        "Mirrors - change direction": 0.14415041782729804,
+        "Mirrors - change speed": 0.15215877437325906,
+        "Signals - necessary": 0.09644846796657382,
+        "Signals - correctly": 0.12848189415041783,
+        "Signals - timed": 0.08913649025069638,
+        "Clearance / obstructions": 0.10967966573816156,
+        "Response to traffic signs": 0.04596100278551532,
+        "Response to road markings": 0.06754874651810584,
+        "Response to traffic lights": 0.05466573816155989,
+        "Response to traffic controllers": 0.0006963788300835655,
+        "Response to road users": 0.014623955431754874,
+        "Use of speed (too fast)": 0.13962395543175488,
+        "Following distance": 0.05118384401114206,
+        "Progress - speed (too slow)": 0.2736768802228412,
+        "Progress - undue hesitation": 0.4192200557103064,
+        "Junctions - approach speed": 0.08321727019498608,
+        "Junctions - observation": 0.24512534818941503,
+        "Junctions - turning right": 0.06128133704735376,
+        "Junctions - turning left": 0.005919220055710306,
+        "Junctions - cutting corners": 0.017061281337047353,
+        "Judgement - overtaking": 0.00766016713091922,
+        "Judgement - meeting": 0.11316155988857939,
+        "Judgement - crossing": 0.014275766016713091,
+        "Positioning - normal driving": 0.0866991643454039,
+        "Positioning - lane discipline": 0.05605849582172702,
+        "Pedestrian crossing": 0.0403899721448468,
+        "Position - normal stops": 0.08391364902506963,
+        "Awareness / planning": 0.11176880222841226,
+        "Ancillary controls": 0.003481894150417827
+    },
+    "fails": {
+        "Eyesight": 0.0,
+        "Emergency stop": 0.0017409470752089136,
+        "Reverse right - control": 0.002437325905292479,
+        "Reverse right - observation": 0.011838440111420613,
+        "Parallel park - control": 0.014972144846796657,
+        "Parallel park - observation": 0.008356545961002786,
+        "Reverse bay park - control": 0.016364902506963788,
+        "Reverse bay park - observation": 0.004874651810584958,
+        "Vehicle checks": 0.0017409470752089136,
+        "Forward bay park - control": 0.0031337047353760445,
+        "Forward bay park - observation": 0.002437325905292479,
+        "Precautions": 0.0,
+        "Control - accelerator": 0.0,
+        "Control - clutch": 0.00034818941504178273,
+        "Control - gears": 0.010793871866295265,
+        "Control - Footbrake": 0.0010445682451253482,
+        "Control - parking brake": 0.0006963788300835655,
+        "Control - steering": 0.030988857938718663,
+        "Move off - safely": 0.022632311977715876,
+        "Move off - control": 0.03447075208913649,
+        "Mirrors - signalling": 0.0031337047353760445,
+        "Mirrors - change direction": 0.02437325905292479,
+        "Mirrors - change speed": 0.016364902506963788,
+        "Signals - necessary": 0.0017409470752089136,
+        "Signals - correctly": 0.005571030640668524,
+        "Signals - timed": 0.001392757660167131,
+        "Clearance / obstructions": 0.013231197771587743,
+        "Response to traffic signs": 0.014972144846796657,
+        "Response to road markings": 0.018454038997214484,
+        "Response to traffic lights": 0.03168523676880223,
+        "Response to traffic controllers": 0.0,
+        "Response to road users": 0.001392757660167131,
+        "Use of speed (too fast)": 0.01149025069637883,
+        "Following distance": 0.004178272980501393,
+        "Progress - speed (too slow)": 0.014972144846796657,
+        "Progress - undue hesitation": 0.017409470752089137,
+        "Junctions - approach speed": 0.0020891364902506965,
+        "Junctions - observation": 0.10341225626740948,
+        "Junctions - turning right": 0.03238161559888579,
+        "Junctions - turning left": 0.0010445682451253482,
+        "Junctions - cutting corners": 0.002437325905292479,
+        "Judgement - overtaking": 0.004178272980501393,
+        "Judgement - meeting": 0.017409470752089137,
+        "Judgement - crossing": 0.0100974930362117,
+        "Positioning - normal driving": 0.006963788300835654,
+        "Positioning - lane discipline": 0.013579387186629526,
+        "Pedestrian crossing": 0.018454038997214484,
+        "Position - normal stops": 0.0006963788300835655,
+        "Awareness / planning": 0.004874651810584958,
+        "Ancillary controls": 0.0
+    },
+    "maneuvres": [
+        {
+            "name": "Forward bay park",
+            "frequency": 0.2217966573816156,
+            "pass": 0.673469387755102,
+            "maneuvre_fails": 0.023547880690737835
+        },
+        {
+            "name": "Reverse bay park",
+            "frequency": 0.26497214484679665,
+            "pass": 0.6123521681997371,
+            "maneuvre_fails": 0.07884362680683311
+        },
+        {
+            "name": "Parallel park",
+            "frequency": 0.24233983286908078,
+            "pass": 0.6522988505747126,
+            "maneuvre_fails": 0.08908045977011494
+        },
+        {
+            "name": "Reverse right",
+            "frequency": 0.26357938718662954,
+            "pass": 0.6433289299867899,
+            "maneuvre_fails": 0.052840158520475564
+        },
+        {
+            "name": "Emergency stop",
+            "frequency": 0.3307799442896936,
+            "pass": 0.7736842105263158,
+            "maneuvre_fails": 0.005263157894736842
+        }
+    ],
+    "totalTestCount": 2872,
+    "dailyTestCount": 13.35813953488372,
+    "pass": 0.6392757660167131,
+    "dangerous_count": 0.03864902506963788,
+    "serious_count": 0.5313370473537604,
+    "minor_count": 4.587395543175488,
+    "dangerous_any": 0.037604456824512536,
+    "serious_any": 0.342966573816156,
+    "minor_any": 0.9578690807799443,
+    "first_attempt": 0.6058495821727019,
+    "attempts": 1.7113509749303621,
+    "times": [
+        {
+            "dayType": "Mon-Fri",
+            "time": "08:00-09:00",
+            "pass": 0.6044776119402985,
+            "dailyTests": 2.6176744186046514
+        },
+        {
+            "dayType": "Mon-Fri",
+            "time": "09:00-10:00",
+            "pass": 0.6836734693877551,
+            "dailyTests": 2.5525581395348835
+        },
+        {
+            "dayType": "Mon-Fri",
+            "time": "10:00-11:00",
+            "pass": 0.6343283582089553,
+            "dailyTests": 2.6176744186046514
+        },
+        {
+            "dayType": "Mon-Fri",
+            "time": "11:00-12:00",
+            "pass": 0.638961038961039,
+            "dailyTests": 2.506976744186047
+        },
+        {
+            "dayType": "Mon-Fri",
+            "time": "12:00-13:00",
+            "pass": 0.6282051282051282,
+            "dailyTests": 2.53953488372093
+        },
+        {
+            "dayType": "Mon-Fri",
+            "time": "13:00-14:00",
+            "pass": 0.5918367346938775,
+            "dailyTests": 1.5953488372093023
+        },
+        {
+            "dayType": "Mon-Fri",
+            "time": "14:00-15:00",
+            "pass": 0.6836734693877551,
+            "dailyTests": 2.5525581395348835
+        },
+        {
+            "dayType": "Mon-Fri",
+            "time": "15:00-16:00",
+            "pass": 0.6438356164383562,
+            "dailyTests": 0.9506976744186046
+        },
+        {
+            "dayType": "Saturday",
+            "time": "08:00-09:00",
+            "pass": 0.625,
+            "dailyTests": 0.5209302325581395
+        },
+        {
+            "dayType": "Saturday",
+            "time": "09:00-10:00",
+            "pass": 0.5,
+            "dailyTests": 0.5209302325581395
+        },
+        {
+            "dayType": "Saturday",
+            "time": "10:00-11:00",
+            "pass": 0.6875,
+            "dailyTests": 0.5209302325581395
+        },
+        {
+            "dayType": "Saturday",
+            "time": "11:00-12:00",
+            "pass": 0.5,
+            "dailyTests": 0.45581395348837206
+        },
+        {
+            "dayType": "Saturday",
+            "time": "12:00-13:00",
+            "pass": 0.7142857142857143,
+            "dailyTests": 0.45581395348837206
+        },
+        {
+            "dayType": "Saturday",
+            "time": "13:00-14:00",
+            "pass": 0.5,
+            "dailyTests": 0.45581395348837206
+        },
+        {
+            "dayType": "Saturday",
+            "time": "14:00-15:00",
+            "pass": 0.5714285714285714,
+            "dailyTests": 0.45581395348837206
+        },
+        {
+            "dayType": "Saturday",
+            "time": "15:00-16:00",
+            "pass": 0.7857142857142857,
+            "dailyTests": 0.45581395348837206
+        },
+        {
+            "dayType": "Mon-Fri",
+            "pass": 0.6405228758169934,
+            "dailyTests": 17.933023255813954,
+            "time": "All times"
+        },
+        {
+            "dayType": "Saturday",
+            "pass": 0.6101694915254238,
+            "dailyTests": 3.8418604651162793,
+            "time": "All times"
+        }
+    ],
+    "name": "Dorchester",
+    "id": 3659,
+    "address": {
+        "name": "Dorchester",
+        "latitude": 50.7142489,
+        "longitude": -2.4686621,
+        "addrLine1": "66 Peverell Avenue West",
+        "addrLine2": "Poundbury",
+        "addrLine3": "Dorchester",
+        "addrLine4": "Dorset",
+        "addrLine5": "",
+        "postcode": "DT1 3SU"
+    }
+}

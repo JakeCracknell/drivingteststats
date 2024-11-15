@@ -1,0 +1,531 @@
+{
+    "Eyesight": {
+        "scenarios": [
+            "Inability to read a license plate from 100m away."
+        ],
+        "highReasons": []
+    },
+    "Emergency stop": {
+        "scenarios": [
+            "Reacting too slowly after the examiner shouts 'Stop!'.",
+            "Stopping too slowly due to improper use of footbrake and clutch.",
+            "NOTE: 360\u00b0 observations are required when moving off, but these are marked under 'Move off - safely'."
+        ],
+        "highReasons": []
+    },
+    "Reverse right - control": {
+        "scenarios": [
+            "When asked to pull over to the right of the road and reverse two car lengths, vehicle control was poor.",
+            "Touching or driving onto the pavement when reversing.",
+            "Being too far from the pavement before and/or after the maneuvre."
+        ],
+        "highReasons": []
+    },
+    "Reverse right - observation": {
+        "scenarios": [
+            "When asked to pull over to the right of the road and reverse two car lengths, observations were poor.",
+            "Failing to stop for passing cars and nearby pedestrians.",
+            "Relying on just the mirrors to check surroundings; no blind spot checks.",
+            "Not judging oncoming traffic safely when moving across to the right."
+        ],
+        "highReasons": []
+    },
+    "Parallel park - control": {
+        "scenarios": [
+            "Inability to control the vehicle whilst reversing.",
+            "Touching the curb or driving over the pavement.",
+            "Needing to reposition the car and reattempt the maneuvre multiple times.",
+            "Finishing too far from the curb or the car in front."
+        ],
+        "highReasons": [
+            "Test routes where the parallel park is performed on roads with a steep road camber, an uneven road surface or less space."
+        ]
+    },
+    "Parallel park - observation": {
+        "scenarios": [
+            "Not completing 360\u00b0 observations whilst reversing.",
+            "Staring at mirrors and not periodically observing all around.",
+            "Being unaware of pedestrians and other road users.",
+            "Getting too close to parked cars and other obstacles when maneuvring."
+        ],
+        "highReasons": [
+            "Test routes where the parallel park is performed on busier roads with more hazards."
+        ]
+    },
+    "Reverse bay park - control": {
+        "scenarios": [
+            "Failing to accurately park within the marked lines of the bay (it is okay to be crooked).",
+            "Inability to control the vehicle whilst reversing.",
+            "Touching or driving over curbs whilst performing the maneuvre.",
+            "Needing to reposition the car and reattempt the maneuvre multiple times."
+        ],
+        "highReasons": [
+            "The most frequently used car parks are cramped or have an uneven surface.",
+            "Often this maneuvre will be done at the test centre. DTC car parks vary in quality."
+        ]
+    },
+    "Reverse bay park - observation": {
+        "scenarios": [
+            "Not completing 360\u00b0 observations whilst reversing.",
+            "Staring at mirrors and not periodically observing all around.",
+            "Being unaware of pedestrians and other car park users."
+        ],
+        "highReasons": [
+            "The most frequently used car parks are cramped or have an uneven surface, thus requiring higher concentration for accuracy and risking sloppy observation."
+        ]
+    },
+    "Vehicle checks": {
+        "scenarios": [
+            "Getting either the show me or tell me question wrong (one minor fault).",
+            "Losing control of the car when answering the show me question."
+        ],
+        "highReasons": []
+    },
+    "Forward bay park - control": {
+        "scenarios": [
+            "Failing to accurately park within the marked lines of the bay (it is okay to be crooked).",
+            "Inability to control the vehicle whilst reversing out of the bay.",
+            "Touching or driving over curbs whilst performing the maneuvre.",
+            "Needing to reposition the car and reattempt the maneuvre multiple times."
+        ],
+        "highReasons": [
+            "The most frequently used car parks are cramped or have an uneven surface."
+        ]
+    },
+    "Forward bay park - observation": {
+        "scenarios": [
+            "Not completing 360\u00b0 observations whilst reversing out of the bay.",
+            "Staring at mirrors and not periodically observing all around.",
+            "Being unaware of pedestrians and other car park users."
+        ],
+        "highReasons": [
+            "The most frequently used car parks are cramped or have an uneven surface, thus requiring higher concentration for accuracy and risking sloppy observation."
+        ]
+    },
+    "Precautions": {
+        "scenarios": [
+            "Starting the car with the gear not in neutral.",
+            "Adjusting seat position or mirrors whilst driving.",
+            "Doors not shut whilst moving."
+        ],
+        "highReasons": []
+    },
+    "Control - accelerator": {
+        "scenarios": [
+            "Jerky use of the accelerator."
+        ],
+        "highReasons": []
+    },
+    "Control - clutch": {
+        "scenarios": [
+            "Keeping the clutch pedal held down (coasting) reducing your control of the car."
+        ],
+        "highReasons": []
+    },
+    "Control - gears": {
+        "scenarios": [
+            "Selecting a low gear at high speed, causing a sudden loss of speed and danger for vehicles behind.",
+            "Selecting a high gear at low speed, and possibly stalling."
+        ],
+        "highReasons": [
+            "Test routes with numerous fast stretches of road, necessitating higher gears and more shifting."
+        ]
+    },
+    "Control - Footbrake": {
+        "scenarios": [
+            "Pressing the footbrake too hard when unnecessary.",
+            "Pressing the footbrake too softly to slow down for a hazard."
+        ],
+        "highReasons": []
+    },
+    "Control - parking brake": {
+        "scenarios": [
+            "Moving off with the handbrake engaged.",
+            "Using the handbrake when driving forward or turning."
+        ],
+        "highReasons": []
+    },
+    "Control - steering": {
+        "scenarios": [
+            "Steering too much, too little, too early or too late.",
+            "Mounting the curb when steering out of a junction.",
+            "Briefly driving on the wrong side of the road when turning through a junction."
+        ],
+        "highReasons": [
+            "Tight junctions and narrow roads.",
+            "Sharp left or right turns on test routes."
+        ]
+    },
+    "Move off - safely": {
+        "scenarios": [
+            "When parked on the road, moving off and causing oncoming traffic to brake or swerve.",
+            "Not checking mirrors and blindspots when moving off from a parked position.",
+            "Not completing all 360\u00b0 observations when continuing after an emergency stop."
+        ],
+        "highReasons": [
+            "Test routes involve stopping on busier roads.",
+            "Test routes involve stopping on bendy residential roads with restricted visibility."
+        ]
+    },
+    "Move off - control": {
+        "scenarios": [
+            "Stalling from a parked position or in traffic.",
+            "Rolling back a considerable amount when moving off.",
+            "Attempting to move off when a gear is not selected."
+        ],
+        "highReasons": [
+            "Hilly areas, especially around junctions.",
+            "Hilly roads with slow stop-start traffic, requiring consecutive hill starts."
+        ]
+    },
+    "Mirrors - signalling": {
+        "scenarios": [
+            "Checking mirrors after or at the same time as signalling."
+        ],
+        "highReasons": [
+            "Test routes that involve frequent or rushed lane changes."
+        ]
+    },
+    "Mirrors - change direction": {
+        "scenarios": [
+            "Failing to check mirrors when exiting a roundabout.",
+            "Failing to check mirrors when changing lanes."
+        ],
+        "highReasons": [
+            "Complex multi-lane roundabouts and one-way systems."
+        ]
+    },
+    "Mirrors - change speed": {
+        "scenarios": [
+            "Failing to check mirrors when slowing down.",
+            "Failing to check mirrors when speeding up, creating danger for anyone overtaking.",
+            "Accidentally slowing due to improper gear selection."
+        ],
+        "highReasons": [
+            "Roads with harsh speed limit changes.",
+            "Fast hilly roads where learners may forget to downshift as needed, causing accidental slow-downs."
+        ]
+    },
+    "Signals - necessary": {
+        "scenarios": [
+            "Not signalling when pulling away from the kerb.",
+            "Not signalling when pulling up at the side of the road.",
+            "Not signalling when turning left or right at a junction.",
+            "Not signalling when changing lanes or overtaking.",
+            "Not signalling when joining or exiting a dual carriageway."
+        ],
+        "highReasons": [
+            "Complex road layouts with frequent lane changes may overwhelm some learners.",
+            "Unclear road markings and signs might lead to last minute rushed lane changes."
+        ]
+    },
+    "Signals - correctly": {
+        "scenarios": [
+            "Signalling left or right, but not turning.",
+            "Signalling right at a roundabout when you want to go ahead.",
+            "Signalling left at a roundabout when you are not intending to take the first exit.",
+            "Failing to cancel a signal after turning.",
+            "Flashing other road users to give way, contrary to the Highway Code."
+        ],
+        "highReasons": [
+            "Main roads with many junctions and driveways with little space between them.",
+            "Roundabouts with more than four exits and/or confusing signs.",
+            "Roundabouts whose signs contradict the actual road geometry, making the 12 o'clock rule difficult to follow."
+        ]
+    },
+    "Signals - timed": {
+        "scenarios": [
+            "Signalling too late for the signal to be effective."
+        ],
+        "highReasons": [
+            "Unclear road markings and signs might lead to last minute rushed lane changes.",
+            "Hidden junctions on main roads."
+        ]
+    },
+    "Clearance / obstructions": {
+        "scenarios": [
+            "Driving too close to a vehicle when passing, even though the road allows for more space.",
+            "Driving too close to parked vehicles or other fixed structures."
+        ],
+        "highReasons": [
+            "Narrow roads with limited space for cars to give way to each other.",
+            "Awkwardly placed width restrictors.",
+            "High levels of traffic and/or bus routes on narrow roads."
+        ]
+    },
+    "Response to traffic signs": {
+        "scenarios": [
+            "Not coming to a complete stop at a stop sign.",
+            "Attempting to drive through a no-entry sign.",
+            "Attempting to drive through any other sign that restricts access (e.g. buses only).",
+            "Ignoring a give way sign and assuming priority.",
+            "Ignoring a keep left sign."
+        ],
+        "highReasons": [
+            "Stop signs are rare in the UK, but may show up in this test centre area.",
+            "Confusing one-way systems.",
+            "Complex road signs restricting access (e.g. bus-only at certain times)."
+        ]
+    },
+    "Response to road markings": {
+        "scenarios": [
+            "Driving in an incorrect lane that was clearly marked.",
+            "Ignoring lane arrows at junctions (e.g. left turn only).",
+            "Ignoring a give way line and assuming priority.",
+            "Stopping within a cycle box, not respecting advanced stop lines."
+        ],
+        "highReasons": [
+            "Road markings worn away due to infrequent maintenance and/or heavy traffic.",
+            "Complex or confusing lane restrictions.",
+            "Road markings can be easily missed in slow moving traffic, especially when other road users may not follow them.",
+            "Give way lines draw in unusual places."
+        ]
+    },
+    "Response to traffic lights": {
+        "scenarios": [
+            "Driving through a red light.",
+            "Driving through an amber light when you could have stopped safely.",
+            "Hesitating unnecessarily at a green light, impeding the flow of traffic.",
+            "Incorrectly stopping at a red light that is meant for other drivers.",
+            "Ignoring or misinterpreting a green arrow filter light.",
+            "Not waiting in the middle of a box junction when turning right."
+        ],
+        "highReasons": [
+            "High traffic volume in the area can pressure learners to avoid stopping for amber lights.",
+            "Confusingly located traffic lights.",
+            "Traffic lights placed on fast sections of road where learners feel pressured to make good progress.",
+            "Traffic lights placed within roundabouts, where learners are too focused on lane position and observations."
+        ]
+    },
+    "Response to traffic controllers": {
+        "scenarios": [
+            "Failing to follow the instructions of a traffic controller (e.g. lollipop men and women)."
+        ],
+        "highReasons": [
+            "Traffic controllers are frequently employed in some areas and very rare in other areas."
+        ]
+    },
+    "Response to road users": {
+        "scenarios": [
+            "Failing to respond to another road user clearly giving way.",
+            "Waiting behind parked or broken down vehicles without attempting to overtake.",
+            "Being oblivious or inconsiderate to other drivers when merging in turn."
+        ],
+        "highReasons": [
+            "Busy or chaotic high streets and city centres."
+        ]
+    },
+    "Use of speed (too fast)": {
+        "scenarios": [
+            "Driving above the posted speed limit.",
+            "Failing to reduce speed when approaching a hazard, such as a pedestrian crossing or a bend in the road.",
+            "Driving too fast on a road with potholes or poor surface condition (regardless of the posted speed limit).",
+            "Driving too fast on a national speed limit road (60 mph is often too dangerous).",
+            "Driving at a speed that is unsafe for the weather - rain, fog, or ice."
+        ],
+        "highReasons": [
+            "Recently changed speed limits that conflict with old limits displayed on satnav.",
+            "Sudden speed limit changes, especially on exit sliproads.",
+            "Inadequate signage, road markings and traffic calming measures.",
+            "Test routes that cross both 20 mph residential zones and regular 30 mph roads.",
+            "20 mph main roads where locals ignore the limit and overtake learners, causing pressure to keep pace.",
+            "Clearly signed 30/40/50/NSL roads that pressure learners to make progress despite potholes, bends, etc."
+        ]
+    },
+    "Following distance": {
+        "scenarios": [
+            "Driving too close to the vehicle in front, failing to maintain a safe stopping distance.",
+            "Not increasing the following distance in rain, fog or ice.",
+            "Failing to adjust the following distance when driving behind larger vehicles.",
+            "Not anticipating the braking actions of the vehicle in front, leading to a sudden need to brake harshly."
+        ],
+        "highReasons": [
+            "Stop-start heavy traffic on busy roads, especially those with traffic lights, can cause learners to feel pressured to misjudge safe following distances.",
+            "Fast moving traffic on dual carriageways where other vehicles are likely to slow down rapidly due to lane layouts and sliproads."
+        ]
+    },
+    "Progress - speed (too slow)": {
+        "scenarios": [
+            "Driving significantly below the speed limit on a clear road without a valid reason (especially if it impacts drivers behind or causes them to overtake).",
+            "Being hesitant to build speed on a sliproad so as to merge safely.",
+            "Slowing down excessively for minor hazards, such as slight bends.",
+            "Losing speed due to improper gear selection on a hill."
+        ],
+        "highReasons": [
+            "Test routes that cross both 20 mph residential zones and regular 30 mph roads - learners may 'hedge' their bets by driving at 20 until they are sure the limit is 30.",
+            "Rural national speed limit roads.",
+            "Fast roads with hills and bends, requiring frequent gear changes to maintain progress.",
+            "Short sliproads necessitating confident acceleration."
+        ]
+    },
+    "Progress - undue hesitation": {
+        "scenarios": [
+            "Not emerging from a junction when it is safe to do so.",
+            "Waiting unnecessarily for another road user to pass who has clearly given way to you.",
+            "Failing to maintain momentum when joining a clear roundabout.",
+            "Ignoring shields and exit signals on mini-roundabouts and therefore missing many opportunities to proceed."
+        ],
+        "highReasons": [
+            "Areas and times with fast, flowing traffic and non-obvious gaps.",
+            "Busy mini-roundabouts.",
+            "Test routes with stops along busy main roads."
+        ]
+    },
+    "Junctions - approach speed": {
+        "scenarios": [
+            "Approaching a junction too quickly, making it difficult to make observations and stop safely if necessary.",
+            "Braking harshly when needing to stop at give way lines."
+        ],
+        "highReasons": [
+            "Roundabouts and other junctions that 'appear out of nowhere' on fast roads, possibly due to inadequate signage.",
+            "Sharp bends or steep inclines on approach to roundabouts.",
+            "Sharp exits off fast roads (e.g. t-junctions off dual carriageways)."
+        ]
+    },
+    "Junctions - cutting corners": {
+        "scenarios": [
+            "Poor steering or positioning when making a turn, causing you to briefly drive on the wrong side of the road.",
+            "Where parked cars make it impossible to avoid cutting corners, doing so at speed without enhanced observation."
+        ],
+        "highReasons": [
+            "Test routes with tight junctions and cars parked near junctions."
+        ]
+    },
+    "Junctions - observation": {
+        "scenarios": [
+            "Emerging at a T-junction or roundabout and causing another vehicle to slow down.",
+            "Emerging from a junction without adequate observations (even if clear).",
+            "Sailing through a crossroads without stopping and looking.",
+            "Joining a dual carriageway via a sliproad without sufficient mirror and blind spot checks.",
+            "Turning right in front of oncoming traffic, causing them to slow down."
+        ],
+        "highReasons": [
+            "Junctions onto busy roads with fast flowing traffic, small gaps and the requirement to build speed quickly to avoid slowing others behind.",
+            "Short, curvy or otherwise awkward sliproads onto dual carriageways.",
+            "Busy high streets and main roads with poor visibility and bikes overtaking."
+        ]
+    },
+    "Junctions - turning right": {
+        "scenarios": [
+            "Incorrect positioning when turning right at junctions.",
+            "Not positioning to the right of the road when turning right.",
+            "Turning right at a roundabout using the incorrect lane.",
+            "Not using the waiting area in the middle of the road when waiting to turn right, therefore blocking traffic behind."
+        ],
+        "highReasons": [
+            "Confusing road layouts, worn road markings and circuitous test routes involving waiting area for right turns.",
+            "Roundabouts with many exits making lane choice less obvious.",
+            "Roundabouts whose signs contradict the actual road geometry, making the 12 o'clock rule difficult to follow."
+        ]
+    },
+    "Junctions - turning left": {
+        "scenarios": [
+            "Incorrect positioning when turning left at junctions.",
+            "Not positioning to the left of a junction when waiting to turn left.",
+            "Turning left at a roundabout using the incorrect lane."
+        ],
+        "highReasons": [
+            "Roundabouts with many exits making lane choice less obvious."
+        ]
+    },
+    "Judgement - overtaking": {
+        "scenarios": [
+            "Being too close to a cyclist when overtaking.",
+            "Overtaking when there is insufficient space, leading to a near miss with an oncoming vehicle.",
+            "Overtaking on a blind bend or over a hill, where visibility is restricted.",
+            "Overtaking in situations where it is expressly prohibited, such as on solid white lines.",
+            "Cutting in after overtaking, causing danger."
+        ],
+        "highReasons": [
+            "Rural roads with a mix of slow-moving vehicles and faster traffic.",
+            "Single-carriageway roads with limited overtaking opportunities.",
+            "High numbers of cyclists."
+        ]
+    },
+    "Judgement - meeting": {
+        "scenarios": [
+            "Failing to slow down or adjust your position when approaching an oncoming vehicle on a narrow road.",
+            "Misjudging the speed of an oncoming vehicle and failing to allow sufficient space for it to pass safely.",
+            "Continuing towards other vehicles when they have priority."
+        ],
+        "highReasons": [
+            "Narrow residential roads, particularly those lined with parked cars.",
+            "Residential roads with hills and bends, requiring faster reaction time."
+        ]
+    },
+    "Judgement - crossing": {
+        "scenarios": [
+            "Turning right across the path of an oncoming vehicle, failing to anticipate its speed."
+        ],
+        "highReasons": [
+            "Certain right turns on fast roads with poor visibility, requiring expert judgement."
+        ]
+    },
+    "Positioning - normal driving": {
+        "scenarios": [
+            "Not driving in the centre of the lane.",
+            "Driving for too long in the right hand lane of a dual carriageway, for no reason.",
+            " 'Straight-lining' a roundabout.",
+            "Not driving in the bus lane when it is allowed at that time."
+        ],
+        "highReasons": [
+            "Many timed bus lanes around test centre.",
+            "Multi-lane roundabouts with worn lane markings."
+        ]
+    },
+    "Positioning - lane discipline": {
+        "scenarios": [
+            "Straddling lanes, preventing other road users from overtaking.",
+            "Drifting over lane markings due to lack of control or concentration."
+        ],
+        "highReasons": [
+            "Roads with complex lane configurations.",
+            "Dual carriageways with bends, requiring extra skill to maintain a central position."
+        ]
+    },
+    "Pedestrian crossing": {
+        "scenarios": [
+            "Failing to stop at a zebra crossing when pedestrians are waiting.",
+            "Stopping on the crossing itself, blocking its use by pedestrians.",
+            "Approaching a crossing too quickly.",
+            "Moving off before a pedestrian has completely cleared the crossing."
+        ],
+        "highReasons": [
+            "Lots of zebra crossings and high foot traffic.",
+            "Crossings awkwardly placed immediately after roundabouts.",
+            "Crossings overly obscured by road furniture, requiring advanced observation skills."
+        ]
+    },
+    "Position - normal stops": {
+        "scenarios": [
+            "Stopping in a location that obstructs a driveway, a junction, or a bus stop.",
+            "Parking with one or more wheels on the pavement.",
+            "Parking too far from the kerb."
+        ],
+        "highReasons": [
+            "Inner city test areas with limited roadside parking.",
+            "Areas where residents habitually park on the pavement can trick learners into thinking it is acceptable."
+        ]
+    },
+    "Awareness / planning": {
+        "scenarios": [
+            "Not anticipating the actions of other road users and reacting late to hazards or changes in traffic flow.",
+            "Waiting behind parked or broken down vehicles without attempting to overtake.",
+            "Being oblivious or inconsiderate to other drivers when merging in turn.",
+            "Not anticipating that pedestrians are about to cross, or walk upon the road."
+        ],
+        "highReasons": [
+            "Busy or chaotic high streets and city centres.",
+            "High numbers of cyclists and/or confusing cycle infrastructure.",
+            "Semi- or fully-pedestrianised roads with pedestrians walking freely around."
+        ]
+    },
+    "Ancillary controls": {
+        "scenarios": [
+            "Losing control of the car when using one of the controls.",
+            "Not turning on the windscreen wipers when it starts to rain.",
+            "Not using the demisters to clear the front windscreen when needed."
+        ],
+        "highReasons": []
+    }
+}
