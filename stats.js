@@ -1,5 +1,5 @@
 const id = new URLSearchParams(window.location.search).get('dtc');
-const dtcPath = `data/${id}.json`;
+const dtcPath = `data/dtc/${id}.json`;
 const nationalPath = 'data/national.json';
 const faultDescriptionsPath = 'data/fault_descriptions.json';
 

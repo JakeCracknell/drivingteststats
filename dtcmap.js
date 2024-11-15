@@ -126,6 +126,10 @@ function onDtcClick(e) {
         .then(response => response.json())
         .then(data => map.getSource('isochrone').setData(data))
         .catch(error => console.error('Error loading isochrone data:', error));
+    gtag('event', 'dtc-click', {
+        'event_category': 'engagement',
+        'event_label': e.features[0].properties.name
+    });
 }
 
 function getHtmlForPopup(dtc) {
