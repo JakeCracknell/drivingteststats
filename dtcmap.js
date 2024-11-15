@@ -130,7 +130,8 @@ function onDtcClick(e) {
 
 function getHtmlForPopup(dtc) {
     let html =  `<h3>${dtc.name}</h3>`;
-    html += `<b>Pass Rate:</b> ${(100 * dtc.pass).toFixed(2)}% ${getEmojiForPassRate(dtc.pass)}`;
+    html += `<b>Postcode:</b> <a href="https://www.google.com/maps/search/?api=1&query=${dtc.latitude},${dtc.longitude}" target="_blank">${dtc.postcode}</a>`;
+    html += `<br><b>Pass Rate:</b> ${(100 * dtc.pass).toFixed(2)}% ${getEmojiForPassRate(dtc.pass)}`;
     if (dtc.dailyTestCount < 1) {
         html += `<br><b>Capacity:</b> ${(dtc.dailyTestCount * 30).toFixed(1)} tests per month`;
     } else if (dtc.dailyTestCount < 3) {
@@ -138,8 +139,7 @@ function getHtmlForPopup(dtc) {
     } else {
         html += `<br><b>Capacity:</b> ${dtc.dailyTestCount.toFixed(1)} tests per day`;
     }
-    html += `<br><b>Postcode:</b> ${dtc.postcode}`;
-    html += `<br><a href="stats.html?dtc=${dtc.id}&name=${dtc.name}" target="_blank">See detailed fault statistics</a>`;
+    html += `<p><button onclick="window.open('stats.html?dtc=${dtc.id}&name=${dtc.name}', '_blank');">See fault stats >></button></p>`;
     return html;
 }
 
