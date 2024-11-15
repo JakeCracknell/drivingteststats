@@ -11,6 +11,19 @@ body {
     width: 100%;
 }
 
+.header {
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    z-index: 1000;
+    user-select: none;
+}
+
 .footer {
     font-family: Arial, sans-serif;
     position: absolute;
