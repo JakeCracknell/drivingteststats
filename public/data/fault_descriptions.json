@@ -1,7 +1,7 @@
 {
     "Eyesight": {
         "scenarios": [
-            "Inability to read a license plate from 100m away."
+            "Inability to read a license plate from 20 metres away."
         ],
         "highReasons": []
     },
