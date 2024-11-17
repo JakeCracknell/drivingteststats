@@ -7,7 +7,7 @@ const map = new mapboxgl.Map({
     minZoom: 5,
     maxZoom: 15,
 });
-fetch('data/dtcds.geojson')
+fetch('data/dtcs.geojson')
     .then(response => response.json())
     .then(data => map.on('load', () => addLayersToMap(data)))
     .catch(error => alert('Please refresh. Error loading GeoJSON data: ' + error));
